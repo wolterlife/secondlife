@@ -1,0 +1,58 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12vh;
+}
+
+.title {
+    letter-spacing: 0.05em;
+    font-size: 37px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    font-family: georgia, palatino, book antiqua, palatino linotype, serif;
+}
+
+.menu {
+    align-items: center;
+    display: flex;
+}
+
+.image {
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+}
+
+.rightBlock {
+    display: flex;
+    margin-left: 64px;
+}
+
+.signButton {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.textLogin {
+    font-size: 14px;
+    padding-left: 12px;
+}
+
+.linkBlock {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.imageLink {
+    width: 24px;
+    margin: 8px;
+}
+
+
+
+

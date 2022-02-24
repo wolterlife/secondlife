@@ -1,10 +1,10 @@
 import React from "react";
 import Header from "../../components/Header";
 
-const QuestionsPage = () => {
+const ShopPage = () => {
   return (
     <Header />
   )
 }
 
-export default QuestionsPage;
+export default ShopPage;
