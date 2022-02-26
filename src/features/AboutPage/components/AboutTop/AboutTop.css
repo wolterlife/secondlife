@@ -1,0 +1,43 @@
+.aboutContainer {
+    background-color: #EDEBEB;
+    height: fit-content;
+    padding-bottom: 120px;
+}
+
+.aboutTop {
+    margin-inline: 20%;
+}
+
+.about__title {
+    padding: 24px 0 0;
+    display: flex;
+    justify-content: center;
+    font-size: 56px;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.about__caption {
+    font-family: "Century Gothic", sans-serif;
+    text-align: justify;
+    line-height: 2;
+    padding-bottom: 34px;
+}
+
+.about__photo {
+    display: flex;
+    justify-content: center;
+}
+
+.about__photo__back {
+    margin-left: 20%;
+    z-index: 1;
+    left: 24px;
+    }
+
+.about__photo__front {
+    position: relative;
+    left: -48px;
+    top: 80px;
+    z-index: 7;
+}
