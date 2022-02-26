@@ -1,0 +1,9 @@
+.slider {
+    margin-top: 24px;
+    margin-bottom: 48px;
+}
+
+.slider__img {
+    margin: auto;
+    height: 70vh;
+}

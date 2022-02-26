@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 12vh;
+    margin-top: 8vh;
 }
 
 .title {
@@ -37,12 +37,17 @@
     align-items: center;
 }
 
+.signButton:hover {
+    color: #4D4D4D;
+}
+
 .textLogin {
     font-size: 14px;
     padding-left: 12px;
 }
 
 .linkBlock {
+    margin-left: 12px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;

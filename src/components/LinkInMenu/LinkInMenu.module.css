@@ -1,13 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Ruda&display=swap');
-.title {
-    margin: 0;
-}
 
 .link {
     letter-spacing: 0.05em;
     font-family: 'Ruda', sans-serif;
     text-decoration: none;
-    padding: 12px 48px;
+    padding: 12px 32px;
     font-size: 14px;
     color: black;
     transition: color 0.2s ease-in;
@@ -15,4 +12,8 @@
 
 .link:hover {
     color: #D1000A;
+}
+
+.title {
+    margin: 0;
 }

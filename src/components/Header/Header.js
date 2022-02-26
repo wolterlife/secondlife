@@ -15,7 +15,7 @@ const Header = () => {
         <LinkInMenu route="/about" title="О нас"/>
         <LinkInMenu route="/contacts" title="Контакты"/>
         <svg
-          onClick={() => console.log('rere')}
+          onClick={() => console.log('open cart')}
           className={styles.image}
           style={{paddingLeft: '24px'}}
           xmlns="http://www.w3.org/2000/svg"
