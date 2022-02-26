@@ -18,21 +18,23 @@ const SliderWithDots = () => {
     touchThreshold: 100,
   };
   return (
-    <div className="slider">
-      <Slider {...settings}>
-        <div>
-          <img className="slider__img" src='img/Catalog/1.jpg' alt='slider-1'/>
-        </div>
-        <div>
-          <img className="slider__img" src='img/Catalog/2.jpg' alt='slider-2'/>
-        </div>
-        <div>
-          <img className="slider__img" src='img/Catalog/3.jpg' alt='slider-3'/>
-        </div>
-        <div>
-          <img className="slider__img" src='img/Catalog/4.png' alt='slider-4'/>
-        </div>
-      </Slider>
+    <div className="SliderWithDots">
+      <div className="slider">
+        <Slider {...settings}>
+          <div>
+            <img className="slider__img" src='img/Catalog/1.jpg' alt='slider-1'/>
+          </div>
+          <div>
+            <img className="slider__img" src='img/Catalog/2.jpg' alt='slider-2'/>
+          </div>
+          <div>
+            <img className="slider__img" src='img/Catalog/3.jpg' alt='slider-3'/>
+          </div>
+          <div>
+            <img className="slider__img" src='img/Catalog/4.png' alt='slider-4'/>
+          </div>
+        </Slider>
+      </div>
     </div>
   )
 }

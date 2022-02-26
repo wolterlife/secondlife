@@ -1,0 +1,32 @@
+.ListQuestions {
+    margin: 72px;
+    margin-inline: 20%;
+    font-family: "Century Gothic", sans-serif;
+    line-height: 2;
+}
+
+.container__question {
+    margin: 24px 0 0;
+    font-size: 22px;
+    text-align: center;
+    font-weight: 100;
+}
+
+.container__answer {
+    /*font-style: italic;*/
+    font-size: 16px;
+    margin: 0;
+}
+
+.container__bottom-text {
+    font-size: 22px;
+    text-align: center;
+    font-weight: 100;
+}
+
+.outDiv {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
