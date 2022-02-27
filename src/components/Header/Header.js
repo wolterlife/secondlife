@@ -2,10 +2,17 @@ import React from 'react';
 import styles from './Header.module.css';
 import LinkInMenu from "../LinkInMenu/LinkInMenu";
 import {Link} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const navToOtherPage = (path) => {
+    window.location.href = path;
+  }
+
   return (
-    <header className={styles.container}>
+    <header id="header" className={styles.container}>
       <Link to="/" className={styles.title}>
         <p>Second Life</p>
       </Link>
@@ -30,13 +37,13 @@ const Header = () => {
           <path d="M156.9 70.5v118H8v-118h148.9m8-8H0v134h164.9v-134z"/>
         </svg>
         <div className={styles.rightBlock}>
-          <div className={styles.signButton}>
+          <div className={styles.signButton} onClick={() => navigate('/login')}>
             <img className={styles.image} src="img/Header/userEmpty.jpg" alt="Профиль"/>
             <p className={styles.textLogin}>Log In</p>
           </div>
           <div className={styles.linkBlock}>
-            <input className={styles.imageLink} type="image" src="img/Header/teleg.webp" alt="Telegram" onClick={() => console.log("Redirect")}/>
-            <input className={styles.imageLink} type="image" src="img/Header/inst.webp" alt="Instagram" onClick={() => console.log("Redirect")}/>
+            <input className={styles.imageLink} type="image" src="img/Header/teleg.webp" alt="Telegram" onClick={() => navToOtherPage('https://t.me/anya073')}/>
+            <input className={styles.imageLink} type="image" src="img/Header/inst.webp" alt="Instagram" onClick={() => navToOtherPage('https://www.instagram.com/anya.073')}/>
           </div>
         </div>
       </div>

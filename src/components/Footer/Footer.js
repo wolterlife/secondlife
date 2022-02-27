@@ -1,7 +1,20 @@
 import React from "react";
 import './Footer.css'
+import {useNavigate} from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const navTo = (path) => {
+    navigate(path);
+    window.scrollBy(0, -2000);
+    window.scrollBy(0, -2000);
+  }
+
+  const navToOtherPage = (path) => {
+    window.location.href = path;
+  }
+
   return (
     <div className="footer">
       <p className="footer__title">
@@ -10,9 +23,9 @@ const Footer = () => {
       <div className="container">
         <div className="container__second">
           <div className="second__group">
-            <button className="second__group-link">Магазин</button>
-            <button className="second__group-link">Вопросы</button>
-            <button className="second__group-link">Контакты</button>
+            <button onClick={() => navTo('/shop')} className="second__group-link">Магазин</button>
+            <button onClick={() => navTo('/questions')} className="second__group-link">Вопросы</button>
+            <button onClick={() => navTo('/contacts')} className="second__group-link">Контакты</button>
           </div>
           <div className="right-block">
             <p className="right-block__title">
@@ -23,9 +36,9 @@ const Footer = () => {
         </div>
         <div className="contacts">
           <input className="contacts__link" type="image" src="img/Header/teleg.webp" alt="Telegram"
-                 onClick={() => console.log("Redirect")}/>
+                 onClick={() => navToOtherPage('https://t.me/anya073')}/>
           <input className="contacts__link" type="image" src="img/Header/inst.webp" alt="Instagram"
-                 onClick={() => console.log("Redirect")}/>
+                 onClick={() => navToOtherPage('https://www.instagram.com/anya.073')}/>
         </div>
       </div>
 

@@ -1,0 +1,68 @@
+.FormRegistration__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.FormRegistrationCenter {
+    display: flex;
+    flex-direction: column;
+}
+
+.FormRegistration__largeText {
+    margin: 0 0 12px;
+    text-align: center;
+    font-size: 48px;
+    font-weight: 500;
+}
+
+.FormRegistration__textWithLink {
+    display: flex;
+    justify-content: center;
+}
+
+.FormRegistration__inside {
+    display: flex;
+    flex-direction: column;
+}
+
+.textWithLink__second {
+    padding-top: 4px;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #D1000A;
+    border: 0;
+}
+
+.FormRegistration__button {
+    font-size: 14px;
+    color: white;
+    padding: 14px;
+    background-color: #D1000A;
+    cursor: pointer;
+    border: 0;
+}
+
+.Formik__label {
+    font-family: "Century Gothic", sans-serif;
+    font-size: 14px;
+    color: #757575;
+    margin-top: 12px;
+}
+
+.Formik__input {
+    font-family: "Century Gothic", sans-serif;
+    border: 0;
+    outline: none;
+    border-bottom: 1px solid #757575;
+    height: 24px;
+    margin-bottom: 12px;
+}
+
+.Formik__input:focus {
+    border: 0;
+    outline: none;
+    border-bottom: 1px solid #000000;
+}

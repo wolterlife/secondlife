@@ -1,17 +1,17 @@
 import React from "react";
 import {Formik, Field, Form} from 'formik';
-import './FormLogin.css';
+import './FormRegistration.css';
 import {useNavigate} from "react-router-dom";
 
-const FormLogin = () => {
+const FormRegistration = () => {
   const navigate = useNavigate();
   return (
-    <div className="FormLogin__container">
-      <div className="FormLoginCenter">
-        <p className="FormLogin__largeText">Войти</p>
-        <div className="FormLogin__textWithLink">
-          <p className="textWithLink__first">Впервые на сайте?</p>
-          <button onClick={() => navigate('/registration')} className="textWithLink__second">Зарегистрироваться</button>
+    <div className="FormRegistration__container">
+      <div className="FormRegistrationCenter">
+        <p className="FormRegistration__largeText">Зарегистрироваться</p>
+        <div className="FormRegistration__textWithLink">
+          <p className="textWithLink__first">Уже есть аккаунт?</p>
+          <button onClick={() => navigate('/login')} className="textWithLink__second">Войти</button>
         </div>
         <div>
           <Formik
@@ -24,7 +24,7 @@ const FormLogin = () => {
               alert(JSON.stringify(values, null, 2));
             }}
           >
-            <Form className="FormLogin__inside">
+            <Form className="FormRegistration__inside">
               <label className="Formik__label" htmlFor="email">Эл. почта</label>
               <Field
                 className="Formik__input"
@@ -42,7 +42,7 @@ const FormLogin = () => {
                 type="password"
               />
 
-              <button className="FormLogin__button" type="submit">Войти</button>
+              <button className="FormRegistration__button" type="submit">Зарегистрироваться</button>
             </Form>
           </Formik>
         </div>
@@ -51,4 +51,4 @@ const FormLogin = () => {
   )
 }
 
-export default FormLogin;
+export default FormRegistration;

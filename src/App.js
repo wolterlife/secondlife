@@ -6,6 +6,7 @@ import ContactsPage from "./features/ContactsPage/ContactsPage";
 import AboutPage from "./features/AboutPage/AboutPage";
 import ShopPage from "./features/ShopPage/ShopPage";
 import LoginPage from "./features/LoginPage/LoginPage";
+import RegistrationPage from "./features/RegistrationPage";
 
 class App extends React.Component {
     render() {
@@ -17,6 +18,7 @@ class App extends React.Component {
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/contacts" element={<ContactsPage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/registration" element={<RegistrationPage />} />
                 {/*<Route path="*" element={<NotFoundPage />} />*/}
             </Routes>
         );
