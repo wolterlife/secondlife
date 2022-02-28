@@ -1,0 +1,65 @@
+.formContact {
+    margin: 0 30%;
+    padding-bottom: 7%;
+    font-size: 22px;
+    font-weight: bold
+}
+
+.FormLoginContact__textWithLink {
+    display: flex;
+}
+
+.FormContact__inside {
+    display: flex;
+    flex-direction: column;
+}
+
+.textWithLinkContact__second {
+    padding-top: 4px;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #D1000A;
+    border: 0;
+}
+
+.FormikContact__label {
+    font-family: "Century Gothic", sans-serif;
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+.FormikContact__input {
+    font-family: "Century Gothic", sans-serif;
+    border: 0;
+    outline: none;
+    border-bottom: 1px solid #757575;
+    height: 24px;
+    padding-left: 8px;
+
+    margin-bottom: 12px;
+}
+
+.FormikContact__input--large {
+    font-family: "Century Gothic", sans-serif;
+    border: 0;
+    outline: none;
+    border-bottom: 1px solid #757575;
+    height: 48px;
+    padding-left: 8px;
+    margin-bottom: 12px;
+}
+
+.FormikContact__input:focus {
+    border: 0;
+    outline: none;
+    border-bottom: 1px solid #000000;
+}
+
+.FormContact__button {
+    font-size: 14px;
+    color: white;
+    padding: 14px;
+    background-color: #D1000A;
+    cursor: pointer;
+    border: 0;
+}
