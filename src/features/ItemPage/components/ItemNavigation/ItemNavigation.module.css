@@ -4,6 +4,7 @@
     font-size: 12px;
     margin-inline: 20%;
     margin-top: 4%;
+    justify-content: space-between;
 }
 
 .leftContainer {
@@ -21,4 +22,31 @@
 
 .nameOfItem {
     color: #666666;
+}
+
+.rightContainer {
+    display: flex;
+}
+
+.navLeftText {
+    padding: 0 4px;
+}
+
+.navRightText {
+    padding: 0 4px;
+}
+
+.arrowImg {
+    height: fit-content;
+    margin:auto;
+}
+
+.leftButton {
+    display: flex;
+    cursor: pointer;
+}
+
+.rightButton {
+    display: flex;
+    cursor: pointer;
 }

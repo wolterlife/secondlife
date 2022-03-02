@@ -5,6 +5,11 @@ import {useNavigate} from "react-router-dom";
 
 const FormRegistration = () => {
   const navigate = useNavigate();
+
+  function createAcc(values) {
+    alert(JSON.stringify(values));
+  }
+
   return (
     <div className="FormRegistration__container">
       <div className="FormRegistrationCenter">
@@ -21,7 +26,7 @@ const FormRegistration = () => {
             }}
             onSubmit={async (values) => {
               await new Promise((r) => setTimeout(r, 500));
-              alert(JSON.stringify(values, null, 2));
+              createAcc(values);
             }}
           >
             <Form className="FormRegistration__inside">
