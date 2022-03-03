@@ -1,13 +1,39 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Formik, Field, Form} from 'formik';
 import './FormRegistration.css';
 import {useNavigate} from "react-router-dom";
+import {database, set, onValue, ref} from "../../../../util/firebase";
 
 const FormRegistration = () => {
   const navigate = useNavigate();
+  const [oldDataMails, setOldDataMails] = useState();
+  // eslint-disable-next-line no-unused-vars
+  const [oldUsersAll, setOldUsersAll] = useState();
+
+  useEffect(() => { // Получение cписка почт
+    onValue(ref(database, 'users/'), snapshot => {
+      if (snapshot.val() !== null) setOldDataMails(Object.values(snapshot.val()));
+    });
+  }, []);
+
+  useEffect(() => { // Получение данных из базы данных
+    onValue(ref(database, 'usersAndPass/'), snapshot => {
+      if (snapshot.val() !== null) setOldUsersAll(Object.values(snapshot.val()));
+    });
+  }, []);
+
 
   function createAcc(values) {
-    alert(JSON.stringify(values));
+    if (values.email !== "" && values.pass !== "") { // Проверка на пустой ввод
+      if (!Object.values(oldDataMails).includes(values.email)) { // Проверка на уникальность и пустоты почты
+        oldDataMails.push(values.email)
+        oldUsersAll.push(values);
+        set(ref(database, 'users/'), oldDataMails); // Добавление в БД почт
+        set(ref(database, 'usersAndPass/'), oldUsersAll) // Добавление в БД пользователей
+        localStorage.setItem('currentUser', JSON.stringify(values.email)); // Хранение в локальной памяти данных о текущем пользователе
+        navigate('/');
+      } else console.log("Не уникальная почта");
+    } else console.log("Пустое поле")
   }
 
   return (
@@ -25,7 +51,7 @@ const FormRegistration = () => {
               pass: '',
             }}
             onSubmit={async (values) => {
-              await new Promise((r) => setTimeout(r, 500));
+              await new Promise((r) => setTimeout(r, 400));
               createAcc(values);
             }}
           >
