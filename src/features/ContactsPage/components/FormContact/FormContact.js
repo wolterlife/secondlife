@@ -1,12 +1,13 @@
 import React from "react";
 import './FormContact.css'
 import {Field, Form, Formik} from "formik";
+import {ref, push, database} from "../../../../util/firebase";
 
 const FormContact = () => {
 
   function sendForm(values) {
     if (values.email !== "" && values.message !== "") {
-      console.log(values);
+      push(ref(database, 'messages/'), values)
     }
     else console.log('Заполните все обязательные поля');
   }
