@@ -8,6 +8,7 @@ import ShopPage from "./features/ShopPage/ShopPage";
 import LoginPage from "./features/LoginPage/LoginPage";
 import RegistrationPage from "./features/RegistrationPage";
 import ItemPage from "./features/ItemPage/ItemPage";
+import ProfilePage from "./features/ProfilePage/ProfilePage";
 
 class App extends React.Component {
     render() {
@@ -20,6 +21,7 @@ class App extends React.Component {
                 <Route path="/contacts" element={<ContactsPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/registration" element={<RegistrationPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/item" element={<ItemPage />} />
             </Routes>
         );

@@ -7,7 +7,6 @@ import {database, set, onValue, ref} from "../../../../util/firebase";
 const FormRegistration = () => {
   const navigate = useNavigate();
   const [oldDataMails, setOldDataMails] = useState();
-  // eslint-disable-next-line no-unused-vars
   const [oldUsersAll, setOldUsersAll] = useState();
 
   useEffect(() => { // Получение cписка почт

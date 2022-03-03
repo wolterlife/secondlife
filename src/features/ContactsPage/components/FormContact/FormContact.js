@@ -3,6 +3,14 @@ import './FormContact.css'
 import {Field, Form, Formik} from "formik";
 
 const FormContact = () => {
+
+  function sendForm(values) {
+    if (values.email !== "" && values.message !== "") {
+      console.log(values);
+    }
+    else console.log('Заполните все обязательные поля');
+  }
+
   return (
     <div className="formContact">
       <p className="formContact__title">Свяжитесь с нами</p>
@@ -15,8 +23,8 @@ const FormContact = () => {
             message: '',
           }}
           onSubmit={async (values) => {
-            await new Promise((r) => setTimeout(r, 500));
-            alert(JSON.stringify(values, null, 2));
+            await new Promise((r) => setTimeout(r, 400));
+            sendForm(values);
           }}
         >
           <Form className="FormContact__inside">
@@ -44,7 +52,7 @@ const FormContact = () => {
               type="email"
             />
 
-            <label className="FormikContact__label" htmlFor="message">Напишите сообщение</label>
+            <label className="FormikContact__label" htmlFor="message">Напишите сообщение *</label>
             <Field
               component="textarea"
               rows="3"

@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './Header.module.css';
 import LinkInMenu from "../LinkInMenu/LinkInMenu";
 import {Link} from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 const Header = () => {
   const navigate = useNavigate();
+  const [isUserAuth] = useState((localStorage.getItem("currentUser")));
 
   const navToOtherPage = (path) => {
     window.location.href = path;
@@ -37,13 +38,24 @@ const Header = () => {
           <path d="M156.9 70.5v118H8v-118h148.9m8-8H0v134h164.9v-134z"/>
         </svg>
         <div className={styles.rightBlock}>
-          <div className={styles.signButton} onClick={() => navigate('/login')}>
-            <img className={styles.image} src="img/Header/userEmpty.jpg" alt="Профиль"/>
-            <p className={styles.textLogin}>Log In</p>
-          </div>
+          {!isUserAuth ? // Кнопка в зависимости от того авторизован ли пользователь
+            (
+              <div className={styles.signButton} onClick={() => navigate('/login')}>
+              <img className={styles.image} src="img/Header/userEmpty.jpg" alt="Профиль"/>
+              <p className={styles.textLogin}>Log In</p>
+            </div>
+            ) : (
+              <div className={styles.signButton} onClick={() => navigate('/profile')}>
+                <img className={styles.image} src="img/Header/userEmpty.jpg" alt="Профиль"/>
+                <p className={styles.textLogin}>Мой профиль</p>
+              </div>
+            )
+          }
           <div className={styles.linkBlock}>
-            <input className={styles.imageLink} type="image" src="img/Header/teleg.webp" alt="Telegram" onClick={() => navToOtherPage('https://t.me/anya073')}/>
-            <input className={styles.imageLink} type="image" src="img/Header/inst.webp" alt="Instagram" onClick={() => navToOtherPage('https://www.instagram.com/anya.073')}/>
+            <input className={styles.imageLink} type="image" src="img/Header/teleg.webp" alt="Telegram"
+                   onClick={() => navToOtherPage('https://t.me/anya073')}/>
+            <input className={styles.imageLink} type="image" src="img/Header/inst.webp" alt="Instagram"
+                   onClick={() => navToOtherPage('https://www.instagram.com/anya.073')}/>
           </div>
         </div>
       </div>
