@@ -3,11 +3,14 @@ import {Formik, Field, Form} from 'formik';
 import './FormLogin.css';
 import {useNavigate} from "react-router-dom";
 import {database, onValue, ref} from "../../../../util/firebase";
+import PopUp from "../../../../components/PopUp";
 
 
 const FormLogin = () => {
   const navigate = useNavigate();
   const [oldUsersAll, setOldUsersAll] = useState();
+  const [isVisibleError, setVisibleError] = useState(false);
+  const [ErrorText, setErrorText] = useState("");
 
   useEffect(() => { // Получение данных из базы данных
     onValue(ref(database, 'usersAndPass/'), snapshot => {
@@ -23,11 +26,15 @@ const FormLogin = () => {
     if (isAccess) {
       localStorage.setItem('currentUser', JSON.stringify(values.email));
       navigate('/')
+    } else {
+      setErrorText("Имя пользователя или пароль введены неверно");
+      setVisibleError(true);
     }
   }
 
   return (
     <div className="FormLogin__container">
+      {isVisibleError && <PopUp callClose={setVisibleError} message={ErrorText} />}
       <div className="FormLoginCenter">
         <p className="FormLogin__largeText">Войти</p>
         <div className="FormLogin__textWithLink">

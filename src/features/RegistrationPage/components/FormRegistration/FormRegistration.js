@@ -3,11 +3,14 @@ import {Formik, Field, Form} from 'formik';
 import './FormRegistration.css';
 import {useNavigate} from "react-router-dom";
 import {database, set, onValue, ref} from "../../../../util/firebase";
+import PopUp from "../../../../components/PopUp";
 
 const FormRegistration = () => {
   const navigate = useNavigate();
   const [oldDataMails, setOldDataMails] = useState();
   const [oldUsersAll, setOldUsersAll] = useState();
+  const [isVisibleError, setVisibleError] = useState(false);
+  const [ErrorText, setErrorText] = useState("");
 
   useEffect(() => { // Получение cписка почт
     onValue(ref(database, 'users/'), snapshot => {
@@ -30,13 +33,20 @@ const FormRegistration = () => {
         set(ref(database, 'users/'), oldDataMails); // Добавление в БД почт
         set(ref(database, 'usersAndPass/'), oldUsersAll) // Добавление в БД пользователей
         localStorage.setItem('currentUser', JSON.stringify(values.email)); // Хранение в локальной памяти данных о текущем пользователе
-        navigate('/');
-      } else console.log("Не уникальная почта");
-    } else console.log("Пустое поле")
+        navigate('/'); // Перенаправление
+      } else {
+        setErrorText("Данный адрес уже занят");
+        setVisibleError(true);
+      }
+    } else {
+      setErrorText("Заполните все поля");
+      setVisibleError(true);
+    }
   }
 
   return (
     <div className="FormRegistration__container">
+      {isVisibleError && <PopUp callClose={setVisibleError} message={ErrorText} />}
       <div className="FormRegistrationCenter">
         <p className="FormRegistration__largeText">Зарегистрироваться</p>
         <div className="FormRegistration__textWithLink">
