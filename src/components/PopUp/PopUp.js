@@ -7,7 +7,7 @@ const PopUp = props => {
     <div className={styles.PopUpOrder}>
       <div className={styles.container}>
         <div className={styles.topContainer}>
-          <p className={styles.form__text}>Ошибка</p>
+          <p className={styles.form__text}>{props.title}</p>
           <input
             className={styles.img}
             alt="Закрыть"
@@ -27,4 +27,5 @@ export default PopUp;
 PopUp.propTypes = {
   callClose: propTypes.func.isRequired,
   message: propTypes.string.isRequired,
+  title: propTypes.string.isRequired,
 }

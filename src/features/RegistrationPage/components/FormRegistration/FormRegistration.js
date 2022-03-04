@@ -46,7 +46,7 @@ const FormRegistration = () => {
 
   return (
     <div className="FormRegistration__container">
-      {isVisibleError && <PopUp callClose={setVisibleError} message={ErrorText} />}
+      {isVisibleError && <PopUp callClose={setVisibleError} message={ErrorText} title="Ошибка"/>}
       <div className="FormRegistrationCenter">
         <p className="FormRegistration__largeText">Зарегистрироваться</p>
         <div className="FormRegistration__textWithLink">

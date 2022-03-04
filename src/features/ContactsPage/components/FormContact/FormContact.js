@@ -11,6 +11,8 @@ const FormContact = () => {
   function sendForm(values) {
     if (values.email !== "" && values.message !== "") {
       push(ref(database, 'messages/'), values)
+      setErrorText("Успешно отправлено");
+      setVisibleError(true);
     } else {
       setErrorText("Заполните все обязательные поля");
       setVisibleError(true);
@@ -19,8 +21,7 @@ const FormContact = () => {
 
   return (
     <>
-      {isVisibleError && <PopUp callClose={setVisibleError} message={ErrorText}/>}
-
+      {isVisibleError && <PopUp callClose={setVisibleError} message={ErrorText} title="Информация" />}
       <div className="formContact">
         <p className="formContact__title">Свяжитесь с нами</p>
         <div>

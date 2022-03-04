@@ -34,7 +34,7 @@ const FormLogin = () => {
 
   return (
     <div className="FormLogin__container">
-      {isVisibleError && <PopUp callClose={setVisibleError} message={ErrorText} />}
+      {isVisibleError && <PopUp callClose={setVisibleError} message={ErrorText} title="Ошибка" />}
       <div className="FormLoginCenter">
         <p className="FormLogin__largeText">Войти</p>
         <div className="FormLogin__textWithLink">
