@@ -1,0 +1,73 @@
+.form {
+    margin-top: 24px;
+}
+
+.label {
+    font-family: "Century Gothic", sans-serif;
+    font-size: 12px;
+    margin: 4px 0 0;
+    padding-bottom: 12px;
+
+}
+
+.input {
+    font-family: "Century Gothic", sans-serif;
+    outline: none;
+    padding: 4px 8px;
+    border: 1px solid #757575;
+    height: 24px;
+    margin-bottom: 12px;
+}
+
+.labelAndInput {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.labelAndInputSecond {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    padding-left: 10%;
+}
+
+.second {
+
+}
+
+.line {
+    display: flex;
+}
+
+.buttonsSections {
+    margin-right: 12px;
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.buttonLeft {
+    font-size: 12px;
+    cursor: pointer;
+    font-family: "Century Gothic", sans-serif;
+    color: #757575;
+    border: 1px solid black;
+    padding: 11px 16px;
+    background-color: white;
+    margin-right: 12px;
+}
+
+.buttonRight {
+    font-size: 12px;
+    cursor: pointer;
+    font-family: "Century Gothic", sans-serif;
+    color: white;
+    border: 1px solid black;
+    padding: 11px 16px;
+    background-color: black;
+}
+
+.buttonRight:hover {
+    background-color: #4B4B4B;
+}

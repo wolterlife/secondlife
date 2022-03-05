@@ -1,0 +1,46 @@
+.container {
+    margin-top: 48px;
+    margin-bottom: 14px;
+    margin-inline: 30%;
+    padding: 24px;
+    height: 100%;
+    border: 1px solid #000000;
+}
+
+.textMyAccount {
+    font-size: 40px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.textSecondLine {
+    font-family: "Century Gothic", sans-serif;
+    font-size: 12px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid black;
+}
+
+.textSecond {
+    font-family: "Century Gothic", sans-serif;
+    font-size: 12px;
+    padding-bottom: 24px;
+}
+
+.textSecondWithOutSpace {
+    font-family: "Century Gothic", sans-serif;
+    font-size: 12px;
+    margin: 4px 0 0;
+}
+
+.textSecondWithOutSpaceGray {
+    font-family: "Century Gothic", sans-serif;
+    font-size: 12px;
+    color: #7F7F7F;
+    margin: 4px 0 0;
+}
+
+.textAccount {
+    font-family: "Century Gothic", sans-serif;
+    margin-top: 24px;
+}
+
