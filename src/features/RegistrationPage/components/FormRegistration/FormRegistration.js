@@ -7,8 +7,9 @@ import PopUp from "../../../../components/PopUp";
 
 const FormRegistration = () => {
   const navigate = useNavigate();
-  const [oldDataMails, setOldDataMails] = useState();
-  const [oldUsersAll, setOldUsersAll] = useState();
+  const [oldDataMails, setOldDataMails] = useState([]);
+  const [oldUsersAll, setOldUsersAll] = useState([]);
+  const [oldUsersInfo, setOldUsersInfo] = useState([]);
   const [isVisibleError, setVisibleError] = useState(false);
   const [ErrorText, setErrorText] = useState("");
 
@@ -18,7 +19,13 @@ const FormRegistration = () => {
     });
   }, []);
 
-  useEffect(() => { // Получение данных из базы данных
+  useEffect(() => { // Получение данных из БД доп. информации
+    onValue(ref(database, 'usersInfo/'), snapshot => {
+      if (snapshot.val() !== null) setOldUsersInfo(Object.values(snapshot.val()));
+    });
+  }, []);
+
+  useEffect(() => { // Получение данных из БД почт+паролей
     onValue(ref(database, 'usersAndPass/'), snapshot => {
       if (snapshot.val() !== null) setOldUsersAll(Object.values(snapshot.val()));
     });
@@ -30,8 +37,10 @@ const FormRegistration = () => {
       if (!Object.values(oldDataMails).includes(values.email)) { // Проверка на уникальность и пустоты почты
         oldDataMails.push(values.email)
         oldUsersAll.push(values);
+        oldUsersInfo.push({formEmail: values.email, formFirstName: "", formSecondName: "", formPhone: ""});
         set(ref(database, 'users/'), oldDataMails); // Добавление в БД почт
         set(ref(database, 'usersAndPass/'), oldUsersAll) // Добавление в БД пользователей
+        set(ref(database, 'usersInfo/'), oldUsersInfo) // Добавление в БД доп. данных
         localStorage.setItem('currentUser', JSON.stringify(values.email)); // Хранение в локальной памяти данных о текущем пользователе
         navigate('/'); // Перенаправление
       } else {

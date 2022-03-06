@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, push, get, onValue, set } from '@firebase/database';
+import { getDatabase, ref, push, get, onValue, set, remove } from '@firebase/database';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDqItfzSpzrK4FxJHHEeU5vlbyjLezvMHY",
@@ -15,6 +15,6 @@ const firebaseConfig = {
 
 const firebase = initializeApp(firebaseConfig);
 
-export { ref, push, get, onValue, set };
+export { ref, push, get, onValue, set, remove };
 
 export const database = getDatabase(firebase);
