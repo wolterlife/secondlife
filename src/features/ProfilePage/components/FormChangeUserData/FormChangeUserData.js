@@ -1,22 +1,10 @@
-/* eslint-disable no-unused-vars */
 import React, {useEffect, useState} from "react";
 import styles from './FormChangeUserData.module.css';
-import {database, onValue, ref, set, push, remove} from "../../../../util/firebase";
+import {database, onValue, ref, set} from "../../../../util/firebase";
 import PopUp from "../../../../components/PopUp";
-import {useNavigate} from "react-router-dom";
 import PropTypes from 'prop-types';
 
 const FormChangeUserData = props => {
-  const navigate = useNavigate();
-  const [formFirstName, setFormFirstName] = useState("");
-  const [formSecondName, setSecondName] = useState("");
-  const [formEmail, setFormEmail] = useState(JSON.parse(localStorage.getItem("currentUser")));
-  const [formPhone, setFormPhone] = useState("");
-  const [oldDataMails, setOldDataMails] = useState([]);
-  const [isVisibleError, setVisibleError] = useState(false);
-  const [ErrorText, setErrorText] = useState("");
-  const [ErrorTitle, setErrorTitle] = useState("");
-  const [oldDataPASS, setOldDataPass] = useState([])
 
   useEffect(() => { // Получение cписка почт
     onValue(ref(database, 'users/'), snapshot => {
@@ -24,19 +12,39 @@ const FormChangeUserData = props => {
     });
   }, []);
 
-  useEffect(() => { // Получение cписка почт
+  useEffect(() => { // Получение cписка почт с паролями
     onValue(ref(database, 'usersAndPass/'), snapshot => {
       if (snapshot.val() !== null) setOldDataPass(Object.values(snapshot.val()));
     });
   }, []);
 
+  useEffect(() => { // Получение cписка доп инфы
+    onValue(ref(database, 'usersInfo/'), snapshot => {
+      if (snapshot.val() !== null) setOldDataInfo(Object.values(snapshot.val()));
+    });
+  }, []);
+
+  const [formFirstName, setFormFirstName] = useState(JSON.parse(localStorage.getItem("userInfo"))?.formFirstName);
+  const [formSecondName, setFormSecondName] = useState(JSON.parse(localStorage.getItem("userInfo"))?.formSecondName);
+  const [formEmail, setFormEmail] = useState(JSON.parse(localStorage?.getItem("currentUser")));
+  const [formPhone, setFormPhone] = useState(JSON.parse(localStorage?.getItem("userInfo"))?.formPhone);
+  const [oldDataMails, setOldDataMails] = useState([]);
+  const [isVisibleError, setVisibleError] = useState(false);
+  const [ErrorText, setErrorText] = useState("");
+  const [ErrorTitle, setErrorTitle] = useState("");
+  const [oldDataPASS, setOldDataPass] = useState([])
+  const [oldDataInfo, setOldDataInfo] = useState([]);
+  // localStorage.setItem("userInfo", JSON.stringify());
+  // let oldMail = JSON.parse(localStorage.getItem("currentUser")); // Получение старой почты для замены
+  // console.log(oldDataInfo[oldDataInfo.findIndex(target => target. === oldMail)])
+
   const resetFoo = () => {
     let oldMail = JSON.parse(localStorage.getItem("currentUser")); // Получение старой почты для замены
-    let oldPass = oldDataPASS[oldDataPASS.findIndex(target => target.email === oldMail)].pass
-    console.log(oldDataPASS);
     let idxUserPass = oldDataPASS.findIndex(target => target.email === oldMail)
-    console.log(idxUserPass);
-    console.log([{pass: oldPass, email: formEmail}]);
+    setFormFirstName(oldDataInfo[idxUserPass].formFirstName);
+    setFormSecondName(oldDataInfo[idxUserPass].formSecondName);
+    setFormPhone(oldDataInfo[idxUserPass].formPhone);
+    setFormEmail(oldDataInfo[idxUserPass].formEmail);
   }
 
   const updateFoo = () => {
@@ -44,22 +52,15 @@ const FormChangeUserData = props => {
     if (formEmail !== "") { // Проверка  почты на пустой ввод
       if (formEmail.includes("@")) { // Проверка почты на валидность
         if (!Object.values(oldDataMails).includes(formEmail) || formEmail !== localStorage.getItem("currentUser")) { // Проверка почты на уникальность
-          let userInfoObj = {
+          let userInfoObj = { // Создание объекта
             formEmail,
             formPhone,
             formFirstName,
             formSecondName,
           }
-
+          localStorage.setItem("userInfo", JSON.stringify(userInfoObj));
           let idxUserPass = oldDataPASS.findIndex(target => target.email === oldMail)
-          console.log(idxUserPass);
           let oldPass = oldDataPASS[oldDataPASS.findIndex(target => target.email === oldMail)].pass
-          let newObjForPass = [{oldPass, formEmail}]
-          /* ----------------------------------
-               Добавить смену данных в бд userPass userInfo
-             ----------------------------------
-          */
-
           set(ref(database, 'users/' + oldDataMails.indexOf(oldMail)), formEmail); // Добавление в БД почт
           set(ref(database, 'usersAndPass/' + idxUserPass), {pass: oldPass, email: formEmail}); // Добавление в БД паролей с почтами
           set(ref(database, 'usersInfo/' + idxUserPass), userInfoObj); // Добавление в БД users info
@@ -86,6 +87,7 @@ const FormChangeUserData = props => {
     }
   }
 
+
   return (
     <form className={styles.form}>
       {isVisibleError && <PopUp callClose={setVisibleError} message={ErrorText} title={ErrorTitle}/>}
@@ -93,25 +95,33 @@ const FormChangeUserData = props => {
         <div className={styles.labelAndInput}>
           <label className={styles.label} htmlFor="firstName">Имя</label>
           <input className={styles.input} name="firstName" type="text"
+                 value={formFirstName?.toString()}
+                 defaultValue={oldDataInfo[oldDataPASS.findIndex(target => target.email === JSON.parse(localStorage.getItem("currentUser")))]?.formFirstName}
                  onChange={event => setFormFirstName(event.target.value)}/>
         </div>
         <div className={styles.labelAndInputSecond}>
-          <label className={styles.label} htmlFor="firstName">Фамилия</label>
-          <input className={styles.input} name="firstName" type="text"
-                 onChange={event => setSecondName(event.target.value)}/>
+          <label className={styles.label} htmlFor="secondName">Фамилия</label>
+          <input className={styles.input} name="secondName" type="text"
+                 value={formSecondName?.toString()}
+                 defaultValue={oldDataInfo[oldDataPASS.findIndex(target => target.email === JSON.parse(localStorage.getItem("currentUser")))]?.formSecondName}
+                 onChange={event => setFormSecondName(event.target.value)}/>
         </div>
       </div>
 
       <div className={styles.line}>
         <div className={styles.labelAndInput}>
-          <label className={styles.label} htmlFor="firstName">Эл. почта</label>
-          <input className={styles.input} name="firstName" type="email"
-                 onChange={event => setFormEmail(event.target.value)} defaultValue={formEmail}/>
+          <label className={styles.label} htmlFor="email">Эл. почта</label>
+          <input className={styles.input} name="email" type="email"
+                 value={formEmail?.toString()}
+                 onChange={event => setFormEmail(event.target.value)} />
         </div>
         <div className={styles.labelAndInputSecond}>
-          <label className={styles.label} htmlFor="firstName">Телефон</label>
-          <input className={styles.input} name="firstName" type="tel"
-                 onChange={event => setFormPhone(event.target.value)}/>
+          <label className={styles.label} htmlFor="tel">Телефон</label>
+          <input className={styles.input} name="tel" type="tel"
+                 value={formPhone?.toString()}
+                 defaultValue={oldDataInfo[oldDataPASS.findIndex(target => target.email === JSON.parse(localStorage.getItem("currentUser")))]?.formPhone}
+                 onChange={event => setFormPhone(event.target.value)}
+          />
         </div>
       </div>
       <div className={styles.buttonsSections}>

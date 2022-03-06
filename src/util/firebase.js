@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, push, get, onValue, set, remove } from '@firebase/database';
 
