@@ -8,13 +8,20 @@ import PopUp from "../../../../components/PopUp";
 
 const FormLogin = () => {
   const navigate = useNavigate();
-  const [oldUsersAll, setOldUsersAll] = useState();
+  const [oldUsersAll, setOldUsersAll] = useState([]);
+  const [oldUsersInfo, setOldUsersInfo] = useState([]);
   const [isVisibleError, setVisibleError] = useState(false);
   const [ErrorText, setErrorText] = useState("");
 
-  useEffect(() => { // Получение данных из базы данных
+  useEffect(() => { // Получение паролей и почт из БД
     onValue(ref(database, 'usersAndPass/'), snapshot => {
       if (snapshot.val() !== null) setOldUsersAll(Object.values(snapshot.val()));
+    });
+  }, []);
+
+  useEffect(() => { // Получение доп. информации о пользователе из БД
+    onValue(ref(database, 'usersInfo/'), snapshot => {
+      if (snapshot.val() !== null) setOldUsersInfo(Object.values(snapshot.val()));
     });
   }, []);
 
@@ -24,7 +31,12 @@ const FormLogin = () => {
       if (oldUsersAll[key].email === values.email && oldUsersAll[key].pass === values.pass) isAccess = true;
     }
     if (isAccess) {
-      localStorage.setItem('currentUser', JSON.stringify(values.email));
+      // Получение данных о пользователе и занесение их в локальную память
+      const idx = oldUsersInfo.findIndex(target => target.formEmail === values.email); // Индекс, чтения в БД
+      localStorage.setItem("userInfo", JSON.stringify(oldUsersInfo[idx])); // Запись в локальную память доп. информации
+      localStorage.setItem('currentUser', JSON.stringify(values.email)); // Запись в локальную память почты
+      //
+
       navigate('/')
     } else {
       setErrorText("Имя пользователя или пароль введены неверно");
@@ -34,7 +46,7 @@ const FormLogin = () => {
 
   return (
     <div className="FormLogin__container">
-      {isVisibleError && <PopUp callClose={setVisibleError} message={ErrorText} title="Ошибка" />}
+      {isVisibleError && <PopUp callClose={setVisibleError} message={ErrorText} title="Ошибка"/>}
       <div className="FormLoginCenter">
         <p className="FormLogin__largeText">Войти</p>
         <div className="FormLogin__textWithLink">
