@@ -44,7 +44,7 @@
     margin-right: 12px;
     margin-top: 12px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .buttonLeft {
@@ -70,4 +70,15 @@
 
 .buttonRight:hover {
     background-color: #4B4B4B;
+}
+
+.buttonExit {
+    font-size: 12px;
+    cursor: pointer;
+    font-family: "Century Gothic", sans-serif;
+    color: #ff0000;
+    border: 1px solid #ff0000;
+    padding: 11px 16px;
+    background-color: #ffffff;
+    margin-right: 12px;
 }
