@@ -16,9 +16,39 @@
     cursor: pointer;
 }
 
-.card__img {
+.card_img-container {
     height: 90%;
     width: 100%;
+}
+
+.card__img {
+    height: 100%;
+    width: 100%;
+}
+
+.card__img--behind {
+    display: none;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.card__img--front {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.card__img--front:hover {
+    display: none;
+    height: 100%;
+    width: 100%;
+    z-index: 7;
+}
+
+.card__img--front:hover + .card__img--behind {
+    display: block;
 }
 
 .card__title {
@@ -30,6 +60,6 @@
 .card__price {
     font-size: 13px;
     margin: 4px;
-
     font-family: 'Ruda', sans-serif;
 }
+
