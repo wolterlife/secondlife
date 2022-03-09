@@ -41,20 +41,20 @@ const Header = () => {
           {!isUserAuth ? // Кнопка в зависимости от того авторизован ли пользователь
             (
               <div className={styles.signButton} onClick={() => navigate('/login')}>
-              <img className={styles.image} src="img/Header/userEmpty.jpg" alt="Профиль"/>
+              <img className={styles.image} src="/img/Header/userEmpty.jpg" alt="Профиль"/>
               <p className={styles.textLogin}>Log In</p>
             </div>
             ) : (
               <div className={styles.signButton} onClick={() => navigate('/profile')}>
-                <img className={styles.image} src="img/Header/userEmpty.jpg" alt="Профиль"/>
+                <img className={styles.image} src="/img/Header/userEmpty.jpg" alt="Профиль"/>
                 <p className={styles.textLogin}>Мой профиль</p>
               </div>
             )
           }
           <div className={styles.linkBlock}>
-            <input className={styles.imageLink} type="image" src="img/Header/teleg.webp" alt="Telegram"
+            <input className={styles.imageLink} type="image" src="/img/Header/teleg.webp" alt="Telegram"
                    onClick={() => navToOtherPage('https://t.me/anya073')}/>
-            <input className={styles.imageLink} type="image" src="img/Header/inst.webp" alt="Instagram"
+            <input className={styles.imageLink} type="image" src="/img/Header/inst.webp" alt="Instagram"
                    onClick={() => navToOtherPage('https://www.instagram.com/anya.073')}/>
           </div>
         </div>

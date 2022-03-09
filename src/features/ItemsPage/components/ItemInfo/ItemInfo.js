@@ -1,10 +1,7 @@
 import React from "react";
 import styles from './ItemInfo.module.css';
-import {useParams} from "react-router-dom";
 
 const ItemInfo = () => {
-  const params = useParams();
-  console.log(params.id);
   function addToCart() {
 
   }
@@ -17,7 +14,7 @@ const ItemInfo = () => {
   return (
     <>
       <div className={styles.container}>
-        <img className={styles.imgLarge} src="/img/Catalog/1.jpg" alt=""/>
+        <img className={styles.imgLarge} src="img/Catalog/1.jpg" alt=""/>
         <div className={styles.card}>
           <p className={styles.cardName}>Топ с длинными рукавами</p>
           <p className={styles.cardPrice}>45,00p.</p>

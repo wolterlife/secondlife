@@ -6,7 +6,8 @@ import ContactsPage from "./features/ContactsPage/ContactsPage";
 import AboutPage from "./features/AboutPage/AboutPage";
 import ShopPage from "./features/ShopPage/ShopPage";
 import LoginPage from "./features/LoginPage/LoginPage";
-import RegistrationPage from "./features/RegistrationPage";
+import RegistrationPage from "./features/RegistrationPage/RegistrationPage";
+import ItemsPage from "./features/ItemsPage/ItemsPage";
 import ItemPage from "./features/ItemPage/ItemPage";
 import ProfilePage from "./features/ProfilePage/ProfilePage";
 
@@ -22,7 +23,9 @@ class App extends React.Component {
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/registration" element={<RegistrationPage/>}/>
         <Route path="/profile" element={<ProfilePage/>}/>
-        <Route path="/item" element={<ItemPage/>}/>
+        <Route path="/item" element={<ItemsPage/>} >
+          <Route path=":id" element={<ItemPage />} />
+        </Route>
       </Routes>
   );
   }

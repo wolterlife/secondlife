@@ -1,0 +1,78 @@
+.container {
+    display: flex;
+    margin-inline: 20%;
+    color: #575757;
+}
+
+.imgLarge {
+    width: 50%;
+    padding: 48px 32px 12px 0;
+}
+
+.card {
+}
+
+.cardName {
+    font-family: 'Century Gothic', sans-serif;
+    margin-top: 48px;
+    font-size: 22px;
+}
+
+.cardPrice {
+    font-family: 'Century Gothic', sans-serif;
+    margin-top: 48px;
+    margin-bottom: 48px;
+    font-size: 22px;
+}
+
+.counterInput {
+    font-family: 'Century Gothic', sans-serif;
+    border: 1px solid #757575;
+    outline: none;
+    font-size: 16px;
+    padding: 8px;
+}
+
+.sectionOfButtons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+}
+
+.buttonAddToCard {
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 14px;
+    padding: 14px;
+    outline: none;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.buttonAddToCard:hover {
+    color: #757575;
+}
+
+.buttonBuyNow:hover {
+    background-color: #DF4C53;
+}
+
+.buttonBuyNow {
+    margin-top: 12px;
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 14px;
+    color: white;
+    padding: 14px;
+    background-color: #D1000A;
+    cursor: pointer;
+    border: 0;
+}
+
+.description {
+    padding-bottom: 24px;
+    line-height: 0.8;
+    font-size: 14px;
+    margin-inline: 20%;
+    font-family: 'Century Gothic', sans-serif;
+}
