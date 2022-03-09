@@ -1,7 +1,9 @@
 import React from "react";
 import './ShortList.css';
+import {useNavigate} from "react-router-dom";
 
 const ShortList = () => {
+  const navigate = useNavigate();
   const servProducts = [ // 12 (id11)
     {
       id: 0,
@@ -25,11 +27,16 @@ const ShortList = () => {
       desSecond: "Размер S,M,L.",
       img: ["23", "23.1"]
     },
-
   ]
 
+  function selectItem(id) {
+    navigate(`/item/${id}`);
+    window.scrollBy(0,-2000);
+    window.scrollBy(0,-2000);
+  }
+
   const res = servProducts.map(item =>
-    <div key={item.id} className="list__card">
+    <div key={item.id} id={item.id} className="list__card" onClick={() => selectItem(item.id)}>
       <div className="card_img-container">
         <img className="card__img--front" src={`img/Catalog/${item.img[0]}.png`} alt=""/>
         <img className="card__img--behind" src={`img/Catalog/${item.img[1]}.png`} alt=""/>

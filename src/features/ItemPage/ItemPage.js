@@ -4,7 +4,9 @@ import Header from "../../components/Header";
 import ItemInfo from "./components/ItemInfo";
 import Footer from "../../components/Footer";
 
-const ItemPage = () => {
+const ItemPage = props => {
+  // eslint-disable-next-line react/prop-types
+  console.log(props)
   return (
     <>
       <Header />
