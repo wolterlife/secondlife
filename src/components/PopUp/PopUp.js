@@ -11,7 +11,7 @@ const PopUp = props => {
           <input
             className={styles.img}
             alt="Закрыть"
-            src="img/close-cross.jpg"
+            src="/img/close-cross.jpg"
             type="image"
             onClick={() => props.callClose(false)}
           />

@@ -1,0 +1,40 @@
+.CartPopUp {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    position: fixed;
+    display: flex;
+    justify-content: flex-end;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.container {
+    width: 350px;
+    font-family: "Ruda", sans-serif;
+    max-width: 40%;
+    background-color: #ffffff;
+}
+
+.containerBlack {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    margin: 0;
+}
+
+.cross {
+    width: 24px;
+    height: 23px;
+    margin-left: 32px;
+}
+
+.textWhite {
+    margin: auto;
+    font-size: 16px;
+    color: #ffffff;
+    padding: 48px 32px 48px 0;
+}

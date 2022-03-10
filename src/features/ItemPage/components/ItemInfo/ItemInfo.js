@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import styles from './ItemInfo.module.css';
 import {useNavigate, useParams} from "react-router-dom";
 import {database, onValue, ref} from "../../../../util/firebase";
+import PopUp from "../../../../components/PopUp";
 
 
 const ItemInfo = () => {
@@ -10,6 +11,8 @@ const ItemInfo = () => {
   const [counter, setCounter] = useState(1);
   const [dataProducts, setDataProducts] = useState();
   const [isPageLoaded, setLoadStatus] = useState(false);
+  const [isVisibleError, setVisibleError] = useState(false);
+  const [ErrorText, setErrorText] = useState("");
 
   useEffect(() => { // Получение данных из БД почт+паролей
     onValue(ref(database, 'productsAll/'), snapshot => {
@@ -19,15 +22,29 @@ const ItemInfo = () => {
   }, []);
 
   function addToCart() {
-    const currentItem = Object.assign({quantity: counter}, dataProducts[params.id]);
-    console.log(currentItem);
+    const currentItem = Object.assign({quantity: counter, id: params.id}, dataProducts[params.id]);
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    if (cart === null) cart = []; // Если корзина пустая - создать новый массив (корзину)
+    if (cart.find(t => currentItem.id === t.id) === undefined) cart.push(currentItem); // Проверка на уникальность товара в корзине
+    else {
+      setErrorText("В корзине уже есть этот товар");
+      setVisibleError(true);
+    }
+    localStorage.setItem('cart', JSON.stringify(cart)); // Хранение в локальной памяти корзины
   }
 
   function buyNow() {
+    if (localStorage.getItem("currentUser") !== null) { // Проверка на авторизацию
+      const currentItem = Object.assign({quantity: counter}, dataProducts[params.id]);
+      console.log(currentItem);
+    } else {
+      setErrorText("Для совершения покупки необходимо авторизоваться")
+      setVisibleError(true);
+    }
   }
 
   function prevItem() { // Навигация. Если пользователь на 0-ом элементе, навигация к последнему.
-    if ((Number(params.id)) === 0) navigate(`/item/${dataProducts.length-1}`)
+    if ((Number(params.id)) === 0) navigate(`/item/${dataProducts.length - 1}`)
     else navigate(`/item/${Number(params.id) - 1}`)
   }
 
@@ -89,7 +106,9 @@ const ItemInfo = () => {
           </div>
         </div>
       )}
-
+      {isVisibleError && (
+        <PopUp callClose={setVisibleError} message={ErrorText} title={"Ошибка"} />
+      )}
 
     </>
   )
