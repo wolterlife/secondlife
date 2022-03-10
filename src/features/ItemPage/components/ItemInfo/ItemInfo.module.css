@@ -10,6 +10,7 @@
 }
 
 .card {
+    width: 100%;
 }
 
 .cardName {
@@ -21,7 +22,7 @@
 .cardPrice {
     font-family: 'Century Gothic', sans-serif;
     margin-top: 48px;
-    margin-bottom: 48px;
+    margin-bottom: 36px;
     font-size: 22px;
 }
 

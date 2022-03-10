@@ -35,9 +35,9 @@ const Footer = () => {
           </div>
         </div>
         <div className="contacts">
-          <input className="contacts__link" type="image" src="img/Header/teleg.webp" alt="Telegram"
+          <input className="contacts__link" type="image" src="/img/Header/teleg.webp" alt="Telegram"
                  onClick={() => navToOtherPage('https://t.me/anya073')}/>
-          <input className="contacts__link" type="image" src="img/Header/inst.webp" alt="Instagram"
+          <input className="contacts__link" type="image" src="/img/Header/inst.webp" alt="Instagram"
                  onClick={() => navToOtherPage('https://www.instagram.com/anya.073')}/>
         </div>
       </div>
