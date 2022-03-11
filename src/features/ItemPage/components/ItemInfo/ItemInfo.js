@@ -9,7 +9,7 @@ const ItemInfo = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [counter, setCounter] = useState(1);
-  const [dataProducts, setDataProducts] = useState();
+  const [dataProducts, setDataProducts] = useState([]);
   const [isPageLoaded, setLoadStatus] = useState(false);
   const [isVisibleError, setVisibleError] = useState(false);
   const [ErrorText, setErrorText] = useState("");

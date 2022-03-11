@@ -38,3 +38,83 @@
     color: #ffffff;
     padding: 48px 32px 48px 0;
 }
+
+.cartList {
+    height: 50%;
+    overflow-y: scroll;
+}
+
+.card {
+    display: flex;
+    padding: 24px;
+}
+
+.cardImg {
+    width: 80px;
+    height: 80px;
+}
+
+.cardRight {
+    padding-left: 12px;
+}
+
+.cardName {
+    margin: 0;
+    font-family: "Century Gothic", sans-serif;
+    color: #757575;
+    font-size: 14px;
+}
+
+.cardPrice {
+    margin: 0;
+    padding-top: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.countContainer {
+    font-family: Arial, sans-serif;
+    display: flex;
+    margin-top: 8px;
+    align-items: center;
+    border: 1px solid black;
+    width: fit-content;
+}
+
+.countText {
+    margin: 0;
+    font-size: 12px;
+}
+
+.countButtonFirst {
+    padding-right: 8px;
+    padding-bottom: 4px;
+    font-size: 16px;
+    background-color: white;
+    border: 0;
+    cursor: pointer;
+    color: #C7C7C7;
+}
+
+.countButtonSecond {
+    padding-left: 8px;
+    font-size: 16px;
+    background-color: white;
+    border: 0;
+    cursor: pointer;
+    color: #C7C7C7;
+}
+
+.sumText {
+    margin: 0;
+    font-family: "Century Gothic", sans-serif;
+    padding-left: 24px;
+    font-size: 18px;
+}
+
+.sumTotal {
+    margin: 0;
+    font-size: 28px;
+    font-family: "Century Gothic", sans-serif;
+    padding-left: 24px;
+}
