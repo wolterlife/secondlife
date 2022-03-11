@@ -27,6 +27,14 @@ const ShortList = () => {
       desSecond: "Размер S,M,L.",
       img: ["23", "23.1"]
     },
+    {
+      id: 3,
+      name: "Платье",
+      price: 50,
+      desFirst: "Черное длинное платье с ромашками.",
+      desSecond: "Размер S,M.",
+      img: ["20.1", "20"]
+    },
   ]
 
   function selectItem(id) {

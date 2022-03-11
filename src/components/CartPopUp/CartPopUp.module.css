@@ -14,7 +14,7 @@
 .container {
     width: 350px;
     font-family: "Ruda", sans-serif;
-    max-width: 40%;
+    max-width: 80%;
     background-color: #ffffff;
 }
 
@@ -26,10 +26,15 @@
     margin: 0;
 }
 
-.cross {
+.crossWhite {
     width: 24px;
     height: 23px;
     margin-left: 32px;
+}
+
+.crossBlack {
+    width: 12px;
+    height: 11px;
 }
 
 .textWhite {
@@ -46,16 +51,26 @@
 
 .card {
     display: flex;
-    padding: 24px;
+    margin: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #E8E6E6;
+    border-collapse: collapse;
 }
 
 .cardImg {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
 }
 
 .cardRight {
     padding-left: 12px;
+    width: 100%;
+}
+
+.cardTopBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .cardName {
@@ -105,16 +120,41 @@
     color: #C7C7C7;
 }
 
+.cartWhite {
+
+}
+
+.cartBottom {
+    position: absolute;
+    bottom: 0;
+}
+
 .sumText {
     margin: 0;
-    font-family: "Century Gothic", sans-serif;
     padding-left: 24px;
     font-size: 18px;
+    padding-bottom: 8px;
 }
 
 .sumTotal {
     margin: 0;
-    font-size: 28px;
+    padding-bottom: 32px;
+    font-size: 24px;
     font-family: "Century Gothic", sans-serif;
     padding-left: 24px;
+}
+
+.buttonContainer {
+    border-top: 1px solid #C7C7C7;
+}
+
+.button {
+    border: 0;
+    width: 300px;
+    margin: 24px;
+    font-size: 14px;
+    color: white;
+    padding: 14px;
+    background-color: #D1000A;
+    cursor: pointer;
 }
