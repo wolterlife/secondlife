@@ -1,18 +1,16 @@
 import React, {useState} from "react";
 import styles from './CartPopUp.module.css';
 import PropTypes from "prop-types";
+import {useNavigate} from "react-router-dom";
 
 const CartPopUp = props => {
-  let [cartList] = useState(JSON.parse(localStorage.getItem('cart')));
-  // eslint-disable-next-line no-unused-vars
-  console.log(JSON.parse(localStorage.getItem('cart')))
-  // eslint-disable-next-line no-unused-vars
+  const navigate = useNavigate();
+  const [cartList] = useState(JSON.parse(localStorage.getItem('cart')));
   const [sum, setSum] = useState(() => {
     let temp = 0;
     for (let key in cartList) temp += (cartList[key].price * cartList[key].quantity);
     return temp;
   });
-
 
   function changeSum() {
     let temp = 0;
@@ -26,22 +24,16 @@ const CartPopUp = props => {
     changeSum();
   }
 
-  function testFoo() {
-    console.log(cartList[0].quantity);
-  }
-
-  function incCounter(item) {
+  function incCounter(item) { // Счётчик количества товара в корзине
     item.quantity++;
-    console.log(item.quantity);
-    localStorage.setItem("cart", JSON.stringify(cartList))
+    localStorage.setItem("cart", JSON.stringify(cartList)) // Сохранение данных
     changeSum()
   }
 
-  function decCounter(item) {
-    if (item.quantity === 1) return 0;
+  function decCounter(item) { // Счётчик количества товара в корзине
+    if (item.quantity === 1) return 0 // Если счётчик = 1, не уменьшать его
     item.quantity--;
-    console.log(item.quantity);
-    localStorage.setItem("cart", JSON.stringify(cartList))
+    localStorage.setItem("cart", JSON.stringify(cartList)) // Сохранение данных
     changeSum()
   }
 
@@ -89,7 +81,7 @@ const CartPopUp = props => {
           <p className={styles.sumText}>Сумма</p>
           <p className={styles.sumTotal}>{sum},00р.</p>
           <div className={styles.buttonContainer}>
-            <button onClick={() => testFoo()} className={styles.button} type="submit">Смотреть корзину</button>
+            <button onClick={() => navigate("/cart-list")} className={styles.button} type="submit">Смотреть корзину</button>
           </div>
         </div>
       </div>

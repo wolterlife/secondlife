@@ -1,0 +1,138 @@
+.cartList {
+    margin-inline: 20%;
+    margin-top: 64px;
+    display: flex;
+    font-family: "Ruda", sans-serif;
+}
+
+.leftBlock {
+    width: 70%;
+}
+
+.rightBlock {
+    width: 30%;
+    margin-left: 48px;
+}
+
+.textTop {
+    border-bottom: 1px solid #CCCCCC;
+    padding-bottom: 18px;
+    margin: 0;
+}
+
+.card {
+    display: flex;
+    margin-top: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+
+.cardImg {
+    border: 1px solid #757575;
+    width: 100px;
+    height: 124px;
+}
+
+.cardRight {
+    width: 100%;
+}
+
+.cardTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cardTopRight {
+    display: flex;
+    align-items: baseline;
+}
+
+.countContainer {
+    width: 60px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    margin-top: 8px;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.countText {
+    margin: 0;
+    font-size: 12px;
+}
+
+.countButtonFirst {
+    padding-right: 8px;
+    padding-bottom: 4px;
+    font-size: 16px;
+    background-color: white;
+    border: 0;
+    cursor: pointer;
+    color: #C7C7C7;
+}
+
+.countButtonSecond {
+    padding-left: 8px;
+    font-size: 16px;
+    background-color: white;
+    border: 0;
+    cursor: pointer;
+    color: #C7C7C7;
+}
+
+.crossBlack {
+    margin-left: 24px;
+    width: 12px;
+    height: 11px;
+}
+
+.cardPriceAll {
+    width: 70px;
+    margin-left: 24px;
+    font-family: "Century Gothic", sans-serif;
+}
+
+.cardName {
+    margin-left: 12px;
+    font-size: 14px;
+}
+
+.cardPrice {
+    margin-top: 0;
+    margin-left: 12px;
+    color: #757575;
+    font-size: 14px;
+    font-family: "Century Gothic", sans-serif;
+}
+
+.section {
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.textSum {
+    padding-top: 14px;
+    margin: 24px 0 0;
+}
+
+.textBelarus {
+    text-decoration: underline;
+    margin: 0;
+}
+
+.textDelivery {
+    margin-top: 24px;
+}
+
+.select {
+
+}
+
+.total {
+    border-top: 1px solid #C7C7C7;
+    padding-top: 24px;
+}

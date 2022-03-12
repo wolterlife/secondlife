@@ -10,6 +10,7 @@ import RegistrationPage from "./features/RegistrationPage/RegistrationPage";
 import ItemsPage from "./features/ItemsPage/ItemsPage";
 import ItemPage from "./features/ItemPage/ItemPage";
 import ProfilePage from "./features/ProfilePage/ProfilePage";
+import CartPage from "./features/CartPage/CartPage";
 
 class App extends React.Component {
   render() {
@@ -23,6 +24,7 @@ class App extends React.Component {
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/registration" element={<RegistrationPage/>}/>
         <Route path="/profile" element={<ProfilePage/>}/>
+        <Route path="/cart-list" element={<CartPage/>}/>
         <Route path="/item" element={<ItemsPage/>} >
           <Route path=":id" element={<ItemPage />} />
         </Route>

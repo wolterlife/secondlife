@@ -88,12 +88,13 @@
 }
 
 .countContainer {
+    width: 60px;
     font-family: Arial, sans-serif;
     display: flex;
     margin-top: 8px;
     align-items: center;
+    justify-content: space-between;
     border: 1px solid black;
-    width: fit-content;
 }
 
 .countText {
