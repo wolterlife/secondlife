@@ -55,6 +55,7 @@ const FormChangeUserData = props => {
   const exitFoo = () => {
     localStorage.removeItem("currentUser");
     localStorage.removeItem("userInfo");
+    localStorage.removeItem("cart");
     navigate('/');
     window.scrollBy(0, -2000);
     window.scrollBy(0, -2000);

@@ -1,6 +1,7 @@
-/* eslint-disable no-unused-vars */
 import React, {useState} from "react";
 import styles from './CartList.module.css'
+import {useNavigate} from "react-router-dom";
+import PopUp from "../../../../components/PopUp";
 
 const CartList = () => {
   const [cartList] = useState(JSON.parse(localStorage.getItem('cart')));
@@ -9,6 +10,8 @@ const CartList = () => {
     for (let key in cartList) temp += (cartList[key].price * cartList[key].quantity);
     return temp;
   });
+  const [isVisibleError, setVisibleError] = useState(false);
+  const navigate = useNavigate()
 
   function changeSum() {
     let temp = 0;
@@ -33,6 +36,12 @@ const CartList = () => {
     cartList.splice(cartList.indexOf(item), 1);
     localStorage.setItem("cart", JSON.stringify(cartList));
     changeSum();
+  }
+
+  function createOrder() {
+    if (localStorage.getItem("currentUser") !== null) { // Проверка на авторизацию
+      navigate('/order')
+    } else setVisibleError(true)
   }
 
   const res = cartList.map(item =>
@@ -64,6 +73,7 @@ const CartList = () => {
 
   return (
     <div className={styles.cartList}>
+      {isVisibleError && <PopUp callClose={setVisibleError} message={"Сначала вы должны зарегистрироваться"} title={"Ошибка"} />}
       <div className={styles.leftBlock}>
         <p className={styles.textTop}>Моя корзина</p>
         {res}
@@ -83,7 +93,15 @@ const CartList = () => {
           <option>Личная встреча - Станция метро Октябрьская, Минск, Беларусь</option>
           <option>Платная доставка - 3,00 р.</option>
         </select>
-        <p className={styles.total}>Итого</p>
+        <div className={styles.sectionLine}>
+          <p className={styles.total}>Итого</p>
+          <p className={styles.total}>{sum},00 р.</p>
+        </div>
+        <button onClick={() => createOrder()} className={styles.button}>Оформить платёж</button>
+        <div className={styles.lastLine}>
+          <img className={styles.imgKey} src="/img/key.jpg" alt="Замок"/>
+          <p>Безопасный платеж</p>
+        </div>
       </div>
     </div>
   )

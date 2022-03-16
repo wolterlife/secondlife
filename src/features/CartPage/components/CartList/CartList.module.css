@@ -120,6 +120,7 @@
 }
 
 .textBelarus {
+    font-size: 14px;
     text-decoration: underline;
     margin: 0;
 }
@@ -129,10 +130,37 @@
 }
 
 .select {
-
+    margin-bottom: 24px;
 }
 
 .total {
+}
+
+.sectionLine {
     border-top: 1px solid #C7C7C7;
-    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    width: 100%;
+    font-size: 14px;
+    color: white;
+    margin-top: 12px;
+    padding: 14px;
+    background-color: #D1000A;
+    cursor: pointer;
+    border: 0;
+}
+
+.lastLine {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 48px;
+}
+
+.imgKey {
+    width: 16px;
+    height: 16px;
 }

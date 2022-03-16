@@ -11,6 +11,7 @@ import ItemsPage from "./features/ItemsPage/ItemsPage";
 import ItemPage from "./features/ItemPage/ItemPage";
 import ProfilePage from "./features/ProfilePage/ProfilePage";
 import CartPage from "./features/CartPage/CartPage";
+import OrderPage from "./features/OrderPage/OrderPage";
 
 class App extends React.Component {
   render() {
@@ -25,6 +26,7 @@ class App extends React.Component {
         <Route path="/registration" element={<RegistrationPage/>}/>
         <Route path="/profile" element={<ProfilePage/>}/>
         <Route path="/cart-list" element={<CartPage/>}/>
+        <Route path="/order" element={<OrderPage/>}/>
         <Route path="/item" element={<ItemsPage/>} >
           <Route path=":id" element={<ItemPage />} />
         </Route>
