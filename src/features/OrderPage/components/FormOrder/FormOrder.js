@@ -1,16 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, {useEffect, useState} from "react";
-import {Formik, Field, Form} from 'formik';
 import './FormOrder.css';
 import {useNavigate} from "react-router-dom";
 import {database, onValue, ref} from "../../../../util/firebase";
 import PopUp from "../../../../components/PopUp";
-import styles from "../../../ProfilePage/components/FormChangeUserData/FormChangeUserData.module.css";
 
 
 const FormOrder = () => {
   const navigate = useNavigate();
-  const [oldUsersInfo, setOldUsersInfo] = useState([]);
   const [isVisibleError, setVisibleError] = useState(false);
   const [ErrorText, setErrorText] = useState("");
   const [TitleText, setTitleText] = useState("");

@@ -17,6 +17,11 @@ const ItemInfo = () => {
   useEffect(() => { // Получение данных из БД почт+паролей
     onValue(ref(database, 'productsAll/'), snapshot => {
       if (snapshot.val() !== null) setDataProducts(Object.values(snapshot.val()));
+      // Скролл страницы в центр товара
+      const el = document.getElementById("scroll");
+      console.log(el);
+      el?.scrollIntoView();
+      // ####
       setLoadStatus(true);
     });
   }, []);
@@ -53,61 +58,59 @@ const ItemInfo = () => {
     else navigate(`/item/${Number(params.id) + 1}`)
   }
 
-  // Перенести навигационный компонент сюда
-
   return (
     <>
       {isPageLoaded && (
-        <div>
-          <div className={styles.containerNav}>
-            <div className={styles.leftContainer}>
-              <button onClick={() => navigate('/')} className={styles.backButton}>Главная&nbsp;</button>
-              <p className={styles.nameOfItem}>/ {dataProducts[params.id].name}</p>
-            </div>
-            <div className={styles.rightContainer}>
-              <div onClick={() => prevItem()} className={styles.leftButton}>
-                <img className={styles.arrowImg} src="/img/left.jpg" alt="Стрелка влево"/>
-                <p className={styles.navLeftText}>Назад</p>
+          <div id="scroll">
+            <div className={styles.containerNav}>
+              <div className={styles.leftContainer}>
+                <button onClick={() => navigate('/')} className={styles.backButton}>Главная&nbsp;</button>
+                <p className={styles.nameOfItem}>/ {dataProducts[params.id].name}</p>
               </div>
-              <p style={{cursor: "default"}}>|</p>
-              <div onClick={() => nextItem()} className={styles.rightButton}>
-                <p className={styles.navRightText}>Вперёд</p>
-                <img className={styles.arrowImg} src="/img/right.jpg" alt="Стрелка влево"/>
-              </div>
-            </div>
-          </div>
-          <div className={styles.container}>
-            <img className={styles.imgLarge} src={`/img/Header/${dataProducts[params.id].img[0]}.webp`} alt=""/>
-            <div className={styles.card}>
-              <p className={styles.cardName}>{dataProducts[params.id].name}</p>
-              <p className={styles.cardPrice}>{dataProducts[params.id].price},00p.</p>
-              <p className={styles.card}>Количество</p>
-              <input className={styles.counterInput}
-                     value={counter}
-                     onChange={e => setCounter(e.target.value)}
-                     id="counterInput"
-                     name="counterInput"
-                     type="number"
-                     min="1" max="100"
-              />
-              <div className={styles.sectionOfButtons}>
-                <button onClick={() => addToCart()} className={styles.buttonAddToCard}>Добавить в корзину</button>
-                <button onClick={() => buyNow()} className={styles.buttonBuyNow}>Купить сейчас</button>
+              <div className={styles.rightContainer}>
+                <div onClick={() => prevItem()} className={styles.leftButton}>
+                  <img className={styles.arrowImg} src="/img/left.jpg" alt="Стрелка влево"/>
+                  <p className={styles.navLeftText}>Назад</p>
+                </div>
+                <p style={{cursor: "default"}}>|</p>
+                <div onClick={() => nextItem()} className={styles.rightButton}>
+                  <p className={styles.navRightText}>Вперёд</p>
+                  <img className={styles.arrowImg} src="/img/right.jpg" alt="Стрелка влево"/>
+                </div>
               </div>
             </div>
+            <div className={styles.container}>
+              <img className={styles.imgLarge} src={`/img/Header/${dataProducts[params.id].img[0]}.webp`} alt=""/>
+              <div className={styles.card}>
+                <p className={styles.cardName}>{dataProducts[params.id].name}</p>
+                <p className={styles.cardPrice}>{dataProducts[params.id].price},00p.</p>
+                <p className={styles.card}>Количество</p>
+                <input className={styles.counterInput}
+                       value={counter}
+                       onChange={e => setCounter(e.target.value)}
+                       id="counterInput"
+                       name="counterInput"
+                       type="number"
+                       min="1" max="100"
+                />
+                <div className={styles.sectionOfButtons}>
+                  <button onClick={() => addToCart()} className={styles.buttonAddToCard}>Добавить в корзину</button>
+                  <button onClick={() => buyNow()} className={styles.buttonBuyNow}>Купить сейчас</button>
+                </div>
+              </div>
+            </div>
+            <div className={styles.description}>
+              <p>
+                {dataProducts[params.id].desFirst}
+              </p>
+              <p>
+                {dataProducts[params.id].desSecond}
+              </p>
+            </div>
           </div>
-          <div className={styles.description}>
-            <p>
-              {dataProducts[params.id].desFirst}
-            </p>
-            <p>
-              {dataProducts[params.id].desSecond}
-            </p>
-          </div>
-        </div>
       )}
       {isVisibleError && (
-        <PopUp callClose={setVisibleError} message={ErrorText} title={"Ошибка"} />
+        <PopUp callClose={setVisibleError} message={ErrorText} title={"Ошибка"}/>
       )}
 
     </>

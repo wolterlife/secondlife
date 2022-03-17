@@ -39,7 +39,6 @@ const ShortList = () => {
 
   function selectItem(id) {
     navigate(`/item/${id}`);
-    window.scrollTo(0, (window.innerHeight / 2) - 50);
   }
 
   const res = servProducts.map(item =>

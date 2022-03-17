@@ -37,7 +37,7 @@ const CartPopUp = props => {
     changeSum()
   }
 
-  const res = cartList.map(item => // Блок отдельного элемента корзины
+  const res = cartList?.map(item => // Блок отдельного элемента корзины
     <div key={item.id} className={styles.card}>
       <img src={`/img/Header/${item?.img[0]}.webp`} className={styles.cardImg} alt="Товар"/>
       <div className={styles.cardRight}>
