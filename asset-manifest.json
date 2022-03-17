@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/secondlife/static/css/main.a10db022.css",
+    "main.js": "/secondlife/static/js/main.689b67e0.js",
+    "static/media/slick.svg": "/secondlife/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/secondlife/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/secondlife/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/secondlife/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/secondlife/index.html",
+    "main.a10db022.css.map": "/secondlife/static/css/main.a10db022.css.map",
+    "main.689b67e0.js.map": "/secondlife/static/js/main.689b67e0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a10db022.css",
+    "static/js/main.689b67e0.js"
+  ]
+}
