@@ -22,16 +22,16 @@ const SliderWithDots = () => {
       <div className="slider">
         <Slider {...settings}>
           <div>
-            <img className="slider__img" src='/img/Header/1.jpg' alt='slider-1'/>
+            <img className="slider__img" src='/img/Header/1.webp' alt='slider-1'/>
           </div>
           <div>
-            <img className="slider__img" src='/img/Header/2.jpg' alt='slider-2'/>
+            <img className="slider__img" src='/img/Header/2.webp' alt='slider-2'/>
           </div>
           <div>
-            <img className="slider__img" src='/img/Header/3.jpg' alt='slider-3'/>
+            <img className="slider__img" src='/img/Header/3.webp' alt='slider-3'/>
           </div>
           <div>
-            <img className="slider__img" src='/img/Header/4.png' alt='slider-4'/>
+            <img className="slider__img" src='/img/Header/4.webp' alt='slider-4'/>
           </div>
         </Slider>
       </div>
