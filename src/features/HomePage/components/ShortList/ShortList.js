@@ -45,8 +45,8 @@ const ShortList = () => {
   const res = servProducts.map(item =>
     <div key={item.id} id={item.id} className="list__card" onClick={() => selectItem(item.id)}>
       <div className="card_img-container">
-        <img className="card__img--front" src={`/img/About/${item.img[0]}.png`} alt=""/>
-        <img className="card__img--behind" src={`/img/About/${item.img[1]}.png`} alt=""/>
+        <img className="card__img--front" src={`/img/Header/${item.img[0]}.png`} alt=""/>
+        <img className="card__img--behind" src={`/img/Header/${item.img[1]}.png`} alt=""/>
       </div>
       <p className="card__title">{item.name}</p>
       <p className="card__price">{item.price},00 руб</p>
