@@ -39,7 +39,7 @@ const CartPopUp = props => {
 
   const res = cartList.map(item => // Блок отдельного элемента корзины
     <div key={item.id} className={styles.card}>
-      <img src={`/img/Catalog/${item?.img[0]}.png`} className={styles.cardImg} alt="Товар"/>
+      <img src={`/img/Header/${item?.img[0]}.webp`} className={styles.cardImg} alt="Товар"/>
       <div className={styles.cardRight}>
         <div className={styles.cardTopBlock}>
           <p className={styles.cardName}>{item.name}</p>
