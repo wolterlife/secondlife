@@ -77,7 +77,7 @@ const ItemInfo = () => {
             </div>
           </div>
           <div className={styles.container}>
-            <img className={styles.imgLarge} src={`/img/Catalog/${dataProducts[params.id].img[0]}.png`} alt=""/>
+            <img className={styles.imgLarge} src={`/img/Header/${dataProducts[params.id].img[0]}.webp`} alt=""/>
             <div className={styles.card}>
               <p className={styles.cardName}>{dataProducts[params.id].name}</p>
               <p className={styles.cardPrice}>{dataProducts[params.id].price},00p.</p>
