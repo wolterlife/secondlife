@@ -1,7 +1,7 @@
-.closeButtonContainer {
+.closeButtonContainerOrder {
     display: flex;
     justify-content: flex-end;
-    margin: 5%;
+    margin: 3%;
 }
 
 .closeButton {

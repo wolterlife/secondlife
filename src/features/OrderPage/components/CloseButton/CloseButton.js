@@ -10,7 +10,7 @@ const CloseButton = () => {
   }
 
   return (
-    <div className="closeButtonContainer">
+    <div className="closeButtonContainerOrder">
       <input className="closeButton" type="image" src="img/close-cross.jpg" alt="Закрыть" onClick={navBack}/>
     </div>
   )
