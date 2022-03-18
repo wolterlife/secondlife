@@ -11,6 +11,7 @@ const CartList = () => {
     return temp;
   });
   const [isVisibleError, setVisibleError] = useState(false);
+  const [ErrorText, setErrorText] = useState("");
   const navigate = useNavigate()
 
   function changeSum() {
@@ -39,9 +40,19 @@ const CartList = () => {
   }
 
   function createOrder() {
-    if (localStorage.getItem("currentUser") !== null) { // Проверка на авторизацию
-      navigate('/order')
-    } else setVisibleError(true)
+    if (localStorage.getItem("currentUser") === null) { // Проверка на авторизацию
+      setErrorText("Войдите в аккаунт для соверешения покупки");
+      setVisibleError(true);
+      return 1;
+    }
+
+    if (!cartList || cartList.length === 0) {
+      setErrorText("Выберите хотя бы один товар");
+      setVisibleError(true);
+      return 1;
+    }
+    navigate('/order')
+
   }
 
   const res = cartList?.map(item =>
@@ -73,7 +84,7 @@ const CartList = () => {
 
   return (
     <div className={styles.cartList}>
-      {isVisibleError && <PopUp callClose={setVisibleError} message={"Сначала вы должны зарегистрироваться"} title={"Ошибка"} />}
+      {isVisibleError && <PopUp callClose={setVisibleError} message={ErrorText} title={"Ошибка"} />}
       <div className={styles.leftBlock}>
         <p className={styles.textTop}>Моя корзина</p>
         {res}

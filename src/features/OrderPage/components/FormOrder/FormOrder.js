@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from "react";
 import './FormOrder.css';
 import {useNavigate} from "react-router-dom";
-import {database, onValue, ref} from "../../../../util/firebase";
+import {database, push, onValue, ref} from "../../../../util/firebase";
 import PopUp from "../../../../components/PopUp";
 
 
@@ -11,8 +11,9 @@ const FormOrder = () => {
   const [isVisibleError, setVisibleError] = useState(false);
   const [ErrorText, setErrorText] = useState("");
   const [TitleText, setTitleText] = useState("");
+  const [isButtonDisable, setButtonDisable] = useState(false);
 
-  // ############################## Данные с БД #####################################################
+  //  Данные с БД
   useEffect(() => { // Получение cписка почт
     onValue(ref(database, 'users/'), snapshot => {
       if (snapshot.val() !== null) setOldDataMails(Object.values(snapshot.val()));
@@ -30,9 +31,8 @@ const FormOrder = () => {
       if (snapshot.val() !== null) setOldDataInfo(Object.values(snapshot.val()));
     });
   }, []);
-  // ###############################################################################################
 
-  // ############################## Инициация значений формы #######################################
+  // Инициация значений формы
   const [oldDataMails, setOldDataMails] = useState([]);
   const [oldDataPASS, setOldDataPass] = useState([])
   const [oldDataInfo, setOldDataInfo] = useState([]);
@@ -59,11 +59,25 @@ const FormOrder = () => {
 
   const [formDest, setFormDest] = useState("");
 
-  // ########################################################################################
+  function createOrder() {
+    if (!formDest || !formFirstName || !formSecondName || !formEmail || !formEmail) { // Проверка на пустой ввод
+      setTitleText("Ошибка")
+      setErrorText("Заполните все поля")
+      setVisibleError(true)
+      return 1;
+    }
+    let order = { // Объект, который содержит информацию о клиенте и о заказе
+      client: {formEmail, formPhone, formDest, formFirstName, formSecondName},
+      product: JSON.parse(localStorage.getItem("cart")),
+    }
+    push(ref(database, "orders/"), order);
 
-  function createOrder(values) {
-    console.log(values);
-    console.log('rere')
+    setTitleText("Информация")
+    setErrorText("Заказ успешно добавлен! Спасибо за покупку")
+    setVisibleError(true)
+    setButtonDisable(true);
+    localStorage.removeItem("cart");
+    setTimeout(() => navigate('/'), 3000)
   }
 
   return (
@@ -108,7 +122,7 @@ const FormOrder = () => {
                  onChange={event => setFormDest(event.target.value)}
           />
         </div>
-          <button className="FormOrder__button" type="button" onClick={() => console.log('rere')}>Сделать заказ</button>
+          <button disabled={isButtonDisable} className="FormOrder__button" type="button" onClick={createOrder}>Сделать заказ</button>
       </div>
     </div>
   )
