@@ -52,6 +52,10 @@ const FormChangeUserData = props => {
   const [oldDataInfo, setOldDataInfo] = useState([]);
   const navigate = useNavigate();
 
+  const admFoo = () => {
+    navigate("/admin");
+  }
+
   const exitFoo = () => {
     localStorage.removeItem("currentUser");
     localStorage.removeItem("userInfo");
@@ -149,6 +153,7 @@ const FormChangeUserData = props => {
       <div className={styles.buttonsSections}>
         <input className={styles.buttonExit} type="button" value="Выход" onClick={exitFoo}/>
         <div>
+          <input className={styles.buttonAdmin} type="button" value="Админ" onClick={admFoo}/>
           <input className={styles.buttonLeft} type="button" value="Сбросить" onClick={resetFoo}/>
           <input className={styles.buttonRight} type="button" value="Обновить" onClick={updateFoo}/>
         </div>

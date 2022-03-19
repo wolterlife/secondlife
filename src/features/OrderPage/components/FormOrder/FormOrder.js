@@ -13,12 +13,6 @@ const FormOrder = () => {
   const [isButtonDisable, setButtonDisable] = useState(false);
 
   //  Данные с БД
-  useEffect(() => { // Получение cписка почт
-    onValue(ref(database, 'users/'), snapshot => {
-      if (snapshot.val() !== null) setOldDataMails(Object.values(snapshot.val()));
-    });
-  }, []);
-
   useEffect(() => { // Получение cписка почт с паролями
     onValue(ref(database, 'usersAndPass/'), snapshot => {
       if (snapshot.val() !== null) setOldDataPass(Object.values(snapshot.val()));
@@ -32,7 +26,6 @@ const FormOrder = () => {
   }, []);
 
   // Инициация значений формы
-  const [oldDataMails, setOldDataMails] = useState([]);
   const [oldDataPASS, setOldDataPass] = useState([])
   const [oldDataInfo, setOldDataInfo] = useState([]);
 

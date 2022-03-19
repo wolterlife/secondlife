@@ -12,12 +12,14 @@ import ItemPage from "./features/ItemPage/ItemPage";
 import ProfilePage from "./features/ProfilePage/ProfilePage";
 import CartPage from "./features/CartPage/CartPage";
 import OrderPage from "./features/OrderPage/OrderPage";
+import AdminPage from "./features/AdminPage/AdminPage";
 
 class App extends React.Component {
   render() {
     return (
       <Routes>
         <Route path="/" element={<HomePage/>}/>
+        <Route path="/admin" element={<AdminPage/>}/>
         <Route path="/shop" element={<ShopPage/>}/>
         <Route path="/questions" element={<QuestionsPage/>}/>
         <Route path="/about" element={<AboutPage/>}/>

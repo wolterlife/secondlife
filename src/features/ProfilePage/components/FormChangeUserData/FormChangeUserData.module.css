@@ -58,6 +58,17 @@
     margin-right: 12px;
 }
 
+.buttonAdmin {
+    font-size: 12px;
+    cursor: pointer;
+    font-family: "Century Gothic", sans-serif;
+    color: #ff7400;
+    border: 1px solid #ff7400;
+    padding: 11px 16px;
+    background-color: #ffffff;
+    margin-right: 12px;
+}
+
 .buttonRight {
     font-size: 12px;
     cursor: pointer;

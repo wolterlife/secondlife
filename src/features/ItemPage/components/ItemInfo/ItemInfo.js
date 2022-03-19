@@ -40,8 +40,9 @@ const ItemInfo = () => {
 
   function buyNow() {
     if (localStorage.getItem("currentUser") !== null) { // Проверка на авторизацию
-      const currentItem = Object.assign({quantity: counter}, dataProducts[params.id]);
-      console.log(currentItem);
+      const currentItem = Object.assign({quantity: counter, id: params.id}, dataProducts[params.id]);
+      localStorage.setItem('cart', JSON.stringify([currentItem]));
+      navigate('/cart-list')
     } else {
       setErrorText("Для совершения покупки необходимо авторизоваться")
       setVisibleError(true);
