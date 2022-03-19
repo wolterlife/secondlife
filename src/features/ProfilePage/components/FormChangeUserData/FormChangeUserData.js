@@ -6,6 +6,16 @@ import PropTypes from 'prop-types';
 import {useNavigate} from "react-router-dom";
 
 const FormChangeUserData = props => {
+  useEffect(() => { // Получение список администраторов
+    onValue(ref(database, 'adminList/'), snapshot => {
+      if (snapshot.val() !== null) {
+        let currUser = JSON.parse(localStorage.getItem("currentUser"));
+        let currData = Object.values(snapshot.val());
+        if (currData.includes(currUser)) setAdmin(true);
+      }
+    });
+  }, []);
+
   useEffect(() => { // Получение cписка почт
     onValue(ref(database, 'users/'), snapshot => {
       if (snapshot.val() !== null) setOldDataMails(Object.values(snapshot.val()));
@@ -23,6 +33,8 @@ const FormChangeUserData = props => {
       if (snapshot.val() !== null) setOldDataInfo(Object.values(snapshot.val()));
     });
   }, []);
+
+  const [isAdmin, setAdmin] = useState(false); // Список администраторов
 
   const [formFirstName, setFormFirstName] = useState(() => { // Получение данных для автозаполнения
     if (JSON.parse(localStorage.getItem("userInfo"))?.formFirstName === undefined) return ""
@@ -68,6 +80,7 @@ const FormChangeUserData = props => {
   const resetFoo = () => {
     let oldMail = JSON.parse(localStorage.getItem("currentUser")); // Получение старой почты для замены
     let idxUserPass = oldDataPASS.findIndex(target => target.email === oldMail)
+    console.log(isAdmin);
     setFormFirstName(oldDataInfo[idxUserPass].formFirstName); // Установка значений по умолчанию
     setFormSecondName(oldDataInfo[idxUserPass].formSecondName);
     setFormPhone(oldDataInfo[idxUserPass].formPhone);
@@ -153,7 +166,7 @@ const FormChangeUserData = props => {
       <div className={styles.buttonsSections}>
         <input className={styles.buttonExit} type="button" value="Выход" onClick={exitFoo}/>
         <div>
-          <input className={styles.buttonAdmin} type="button" value="Админ" onClick={admFoo}/>
+          {isAdmin && <input className={styles.buttonAdmin} type="button" value="Админ" onClick={admFoo}/>}
           <input className={styles.buttonLeft} type="button" value="Сбросить" onClick={resetFoo}/>
           <input className={styles.buttonRight} type="button" value="Обновить" onClick={updateFoo}/>
         </div>

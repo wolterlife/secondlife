@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../../components/Header";
 import LineWithText from "../../components/LineWithText";
 import SliderWithDots from "./components/SliderWithDots";
-import ShortList from "./components/ShortList";
+import ProductList from "../../components/ProductList";
 import ButtonMore from "./components/ButtonMore";
 import Footer from "../../components/Footer";
 
@@ -13,7 +13,7 @@ const HomePage = () => {
       <LineWithText title="Найдите то, что давно искали"/>
       <SliderWithDots />
       <LineWithText title="Настоящие находки по отличной цене" />
-      <ShortList />
+      <ProductList full={false} />
       <ButtonMore />
       <Footer />
     </>
