@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import styles from './PopUpOrder.module.css'
+import PropTypes from "prop-types";
 
 const PopUpOrder = props => {
   const res = props.order.map(item =>
@@ -35,6 +35,11 @@ const PopUpOrder = props => {
       </div>
     </div>
   )
+}
+
+PopUpOrder.propTypes = {
+  order: PropTypes.object.isRequired,
+  setPopUpVisible: PropTypes.func.isRequired,
 }
 
 export default PopUpOrder;

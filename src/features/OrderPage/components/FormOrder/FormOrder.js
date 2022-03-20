@@ -11,7 +11,8 @@ const FormOrder = () => {
   const [ErrorText, setErrorText] = useState("");
   const [TitleText, setTitleText] = useState("");
   const [isButtonDisable, setButtonDisable] = useState(false);
-
+  const [cartList] = useState(JSON.parse(localStorage.getItem('cart')));
+  if (!cartList || cartList.length === 0) navigate('/')
   //  Данные с БД
   useEffect(() => { // Получение cписка почт с паролями
     onValue(ref(database, 'usersAndPass/'), snapshot => {

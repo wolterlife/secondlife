@@ -3,7 +3,7 @@ import CloseButton from "./components/CloseButton";
 import FormOrder from "./components/FormOrder";
 
 const OrderPage = () => {
-  return (
+    return (
     <>
       <CloseButton />
       <FormOrder />
