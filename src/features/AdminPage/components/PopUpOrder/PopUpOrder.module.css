@@ -66,3 +66,7 @@
 .textQuantity {
     padding-left: 8px;
 }
+
+input:disabled {
+    background-color: rgba(87, 87, 87, 0.2);
+}

@@ -53,7 +53,7 @@ const FormOrder = () => {
   const [formDest, setFormDest] = useState("");
 
   function createOrder() {
-    if (!formDest || !formFirstName || !formSecondName || !formEmail || !formEmail) { // Проверка на пустой ввод
+    if (!formFirstName || !formSecondName || !formEmail || !formEmail) { // Проверка на пустой ввод
       setTitleText("Ошибка")
       setErrorText("Заполните все поля")
       setVisibleError(true)
@@ -95,28 +95,31 @@ const FormOrder = () => {
                    onChange={event => setFormSecondName(event.target.value)}/>
           </div>
         </div>
-          <div className="FormOrder__labelAndInput">
-            <label className="Formik__label" htmlFor="email">Эл. почта</label>
-            <input className="Formik__input" name="email" type="email"
-                   value={formEmail?.toString()}
-                   onChange={event => setFormEmail(event.target.value)}/>
-          </div>
-          <div className="FormOrder__labelAndInput">
-            <label className="Formik__label" htmlFor="tel">Телефон</label>
-            <input className="Formik__input" name="tel" type="tel"
-                   value={formPhone?.toString()}
-                   defaultValue={oldDataInfo[oldDataPASS.findIndex(target => target.email === JSON.parse(localStorage.getItem("currentUser")))]?.formPhone}
-                   onChange={event => setFormPhone(event.target.value)}
-            />
-          </div>
+        <div className="FormOrder__labelAndInput">
+          <label className="Formik__label" htmlFor="email">Эл. почта</label>
+          <input className="Formik__input" name="email" type="email"
+                 value={formEmail?.toString()}
+                 onChange={event => setFormEmail(event.target.value)}/>
+        </div>
+        <div className="FormOrder__labelAndInput">
+          <label className="Formik__label" htmlFor="tel">Телефон</label>
+          <input className="Formik__input" name="tel" type="tel"
+                 value={formPhone?.toString()}
+                 defaultValue={oldDataInfo[oldDataPASS.findIndex(target => target.email === JSON.parse(localStorage.getItem("currentUser")))]?.formPhone}
+                 onChange={event => setFormPhone(event.target.value)}
+          />
+        </div>
         <div className="FormOrder__labelAndInput">
           <label className="Formik__label" htmlFor="address">Адрес доставки</label>
-          <input className="Formik__input" name="address" type="text"
+          <input disabled={(JSON.parse(localStorage.getItem("orderType")) === "false")} className="Formik__input"
+                 name="address" type="text"
                  value={formDest?.toString()}
                  onChange={event => setFormDest(event.target.value)}
           />
         </div>
-          <button disabled={isButtonDisable} className="FormOrder__button" type="button" onClick={createOrder}>Сделать заказ</button>
+        <button disabled={isButtonDisable} className="FormOrder__button" type="button" onClick={createOrder}>Сделать
+          заказ
+        </button>
       </div>
     </div>
   )

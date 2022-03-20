@@ -5,6 +5,8 @@ import PopUp from "../../../../components/PopUp";
 
 const CartList = () => {
   const [cartList] = useState(JSON.parse(localStorage.getItem('cart')));
+  // eslint-disable-next-line no-unused-vars
+  const [delivStatus, setDelivStatus] = useState(JSON.parse(localStorage.getItem("orderType")));
   const [sum, setSum] = useState(() => {
     let temp = 0;
     for (let key in cartList) temp += (cartList[key].price * cartList[key].quantity);
@@ -51,8 +53,8 @@ const CartList = () => {
       setVisibleError(true);
       return 1;
     }
+    localStorage.setItem("orderType", JSON.stringify(delivStatus))
     navigate('/order')
-
   }
 
   const res = cartList?.map(item =>
@@ -84,7 +86,7 @@ const CartList = () => {
 
   return (
     <div className={styles.cartList}>
-      {isVisibleError && <PopUp callClose={setVisibleError} message={ErrorText} title={"Ошибка"} />}
+      {isVisibleError && <PopUp callClose={setVisibleError} message={ErrorText} title={"Ошибка"}/>}
       <div className={styles.leftBlock}>
         <p className={styles.textTop}>Моя корзина</p>
         {res}
@@ -100,10 +102,12 @@ const CartList = () => {
           <p className={styles.textDelivery}>БЕСПЛАТНО</p>
         </div>
         <p className={styles.textBelarus}>Беларусь</p>
-        <select className={styles.select}>
-          <option>Личная встреча - Станция метро Октябрьская, Минск, Беларусь</option>
-          <option>Платная доставка - 3,00 р.</option>
-        </select>
+        <form name="form">
+          <select defaultValue={JSON.parse(localStorage.getItem("orderType"))} name="select" className={styles.select} onChange={e => setDelivStatus(e.target.value)}>
+            <option value="false">Личная встреча - Станция метро Октябрьская, Минск</option>
+            <option value="true">Платная доставка - 3,00 р.</option>
+          </select>
+        </form>
         <div className={styles.sectionLine}>
           <p className={styles.total}>Итого</p>
           <p className={styles.total}>{sum},00 р.</p>

@@ -17,14 +17,11 @@ const ItemInfo = () => {
   useEffect(() => { // Получение данных из БД почт+паролей
     onValue(ref(database, 'productsAll/'), snapshot => {
       if (snapshot.val() !== null) setDataProducts(Object.values(snapshot.val()));
-      // Скролл страницы в центр товара
-      const el = document.getElementById("scroll");
-      console.log(el);
-      el?.scrollIntoView();
-      // ####
       setLoadStatus(true);
+      setTimeout(() => document.getElementById("scroll").scrollIntoView(),1) // Скролл в центр
     });
   }, []);
+
 
   function addToCart() {
     const currentItem = Object.assign({quantity: counter, id: params.id}, dataProducts[params.id]);

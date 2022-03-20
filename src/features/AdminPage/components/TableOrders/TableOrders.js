@@ -26,6 +26,7 @@ const TableOrders = () => {
   const res = oldDataInfo.map(item => // Экземпляр строчки таблицы
     <tr key={item.id}>
       <td className={styles.item}>{item.client.formFirstName} {item.client.formSecondName}</td>
+      <td className={styles.item}>{(item.client.formDest) ? {item.client.formDest} : "Самовывоз"}</td>
       <td className={styles.item}>{item.client.formEmail}</td>
       <td className={styles.item}>{item.client.formPhone}</td>
       <td className={styles.item}>
@@ -43,6 +44,7 @@ const TableOrders = () => {
         <thead>
         <tr>
           <th className={styles.head}>Клиент</th>
+          <th className={styles.head}>Адрес</th>
           <th className={styles.head}>Почта</th>
           <th className={styles.head}>Телефон</th>
           <th className={styles.head}>Действие</th>
