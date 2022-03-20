@@ -163,4 +163,6 @@
 .imgKey {
     width: 16px;
     height: 16px;
+    padding-right: 4px;
+    padding-bottom: 4px;
 }

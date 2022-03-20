@@ -9,6 +9,7 @@ const FormContact = () => {
   const [ErrorText, setErrorText] = useState("");
 
   function sendForm(values) {
+    values.id = Date.now()
     if (values.email !== "" && values.message !== "") {
       push(ref(database, 'messages/'), values)
       setErrorText("Успешно отправлено");
@@ -31,6 +32,7 @@ const FormContact = () => {
               secondName: '',
               email: '',
               message: '',
+              id: Date.now(),
             }}
             onSubmit={async (values) => {
               await new Promise((r) => setTimeout(r, 400));

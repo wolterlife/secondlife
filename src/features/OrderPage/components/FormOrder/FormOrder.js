@@ -61,6 +61,7 @@ const FormOrder = () => {
     let order = { // Объект, который содержит информацию о клиенте и о заказе
       client: {formEmail, formPhone, formDest, formFirstName, formSecondName},
       product: JSON.parse(localStorage.getItem("cart")),
+      id: Date.now(),
     }
     push(ref(database, "orders/"), order);
 

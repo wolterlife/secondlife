@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin:auto;
+    align-items: center;
+    max-width: 50%;
+}
+
+.table {
+    text-align: center;
+    font-family: 'Ruda', sans-serif;
+    border-radius: 4px;
+    background-color: #F0F0F0;
+    color: #000000;
+    border-collapse: collapse;
+    border-style: hidden;
+    box-shadow: 0 0 0 1px #666;
+    margin: 24px;
+}
+
+.head {
+    padding: 18px;
+}
+
+.item {
+    padding: 4px;
+}
