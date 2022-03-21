@@ -65,6 +65,8 @@ const FormChangeUserData = props => {
   const navigate = useNavigate();
 
   const admFoo = () => {
+    window.scrollBy(0, -2000);
+    window.scrollBy(0, -2000);
     navigate("/admin");
   }
 
