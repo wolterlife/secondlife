@@ -10,15 +10,17 @@ const CartList = () => {
   const [sum, setSum] = useState(() => {
     let temp = 0;
     for (let key in cartList) temp += (cartList[key].price * cartList[key].quantity);
+    if (JSON.parse(localStorage.getItem("orderType")) === "true") temp = temp + 3; // Если платная доставка + 3 руб
     return temp;
   });
   const [isVisibleError, setVisibleError] = useState(false);
   const [ErrorText, setErrorText] = useState("");
   const navigate = useNavigate()
 
-  function changeSum() {
+  function changeSum(v) {
     let temp = 0;
     for (let key in cartList) temp += (cartList[key].price * cartList[key].quantity);
+    if ((JSON.parse(localStorage.getItem("orderType")) === "true") || v) temp = temp + 3; // Если платная доставка + 3 руб
     setSum(temp);
   }
 
@@ -57,6 +59,12 @@ const CartList = () => {
     navigate('/order')
   }
 
+  function selectFoo(e) {
+    if(e.target.value === "true") changeSum(true);
+    else changeSum()
+    setDelivStatus(e.target.value);
+  }
+
   const res = cartList?.map(item =>
     <div key={item.id} className={styles.card}>
       <img src={`/img/Header/${item?.img[0]}.webp`} className={styles.cardImg} alt="Товар"/>
@@ -84,6 +92,7 @@ const CartList = () => {
     </div>
   )
 
+
   return (
     <div className={styles.cartList}>
       {isVisibleError && <PopUp callClose={setVisibleError} message={ErrorText} title={"Ошибка"}/>}
@@ -103,7 +112,7 @@ const CartList = () => {
         </div>
         <p className={styles.textBelarus}>Беларусь</p>
         <form name="form">
-          <select defaultValue={JSON.parse(localStorage.getItem("orderType"))} name="select" className={styles.select} onChange={e => setDelivStatus(e.target.value)}>
+          <select defaultValue={JSON.parse(localStorage.getItem("orderType"))} name="select" className={styles.select} onChange={e => selectFoo(e)}>
             <option value="false">Личная встреча - Станция метро Октябрьская, Минск</option>
             <option value="true">Платная доставка - 3,00 р.</option>
           </select>

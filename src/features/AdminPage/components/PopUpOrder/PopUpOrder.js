@@ -16,7 +16,7 @@ const PopUpOrder = props => {
   let cartList = props.order;
   let sum = 0;
   for (let key in cartList) sum += (cartList[key].price * cartList[key].quantity);
-  console.log(sum);
+  if (JSON.parse(localStorage.getItem("orderType")) === "true") sum = sum + 3; // Если платная доставка + 3 руб
 
   return (
     <div className={styles.PopUpOrder}>
@@ -38,7 +38,7 @@ const PopUpOrder = props => {
 }
 
 PopUpOrder.propTypes = {
-  order: PropTypes.object.isRequired,
+  order: PropTypes.array.isRequired,
   setPopUpVisible: PropTypes.func.isRequired,
 }
 
