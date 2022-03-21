@@ -20,7 +20,11 @@ const CartList = () => {
   function changeSum(v) {
     let temp = 0;
     for (let key in cartList) temp += (cartList[key].price * cartList[key].quantity);
-    if ((JSON.parse(localStorage.getItem("orderType")) === "true") || v) temp = temp + 3; // Если платная доставка + 3 руб
+    if ((JSON.parse(localStorage.getItem("orderType")) === "true") || v === 3) temp = temp + 3; // Если платная доставка + 3 руб
+    if (v === -3) {
+      temp = 0;
+      for (let key in cartList) temp += (cartList[key].price * cartList[key].quantity);
+    }
     setSum(temp);
   }
 
@@ -60,8 +64,8 @@ const CartList = () => {
   }
 
   function selectFoo(e) {
-    if(e.target.value === "true") changeSum(true);
-    else changeSum()
+    if(e.target.value === "true") changeSum(3);
+    else changeSum(-3)
     setDelivStatus(e.target.value);
   }
 
