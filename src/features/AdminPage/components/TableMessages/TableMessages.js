@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
 import styles from './TableMessages.module.css'
 import {database, onValue, ref, set} from "../../../../util/firebase";
+import {useNavigate} from "react-router-dom";
 
 const TableMessages = () => {
+  const navigate = useNavigate();
   const [oldDataInfo, setDataInfo] = useState([]);
   useEffect(() => { // Получение cписка доп инфы
     onValue(ref(database, 'messages/'), snapshot => {
@@ -12,6 +14,7 @@ const TableMessages = () => {
 
   function dellFoo(item) {
     oldDataInfo.splice(oldDataInfo.indexOf(item),1);
+    navigate('/admin');
     set(ref(database, "messages/"), oldDataInfo)
   }
 

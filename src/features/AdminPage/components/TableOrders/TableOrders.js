@@ -2,8 +2,10 @@ import React, {useEffect, useState} from "react";
 import styles from './TableOrders.module.css'
 import {database, onValue, ref, set} from "../../../../util/firebase";
 import PopUpOrder from "../PopUpOrder/PopUpOrder";
+import {useNavigate} from "react-router-dom";
 
 const TableOrders = () => {
+  const navigate = useNavigate();
   const [oldDataInfo, setDataInfo] = useState([]);
   const [currOrder, setOrder] = useState([]);
   const [isPopUpVisible, setPopUpVisible] = useState(false);
@@ -15,6 +17,7 @@ const TableOrders = () => {
 
   function dellFoo(item) {
     oldDataInfo.splice(oldDataInfo.indexOf(item), 1);
+    navigate('/admin');
     set(ref(database, "orders/"), oldDataInfo)
   }
 
